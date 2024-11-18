@@ -10,6 +10,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:text_search/text_search.dart';
 import 'article_lists_model.dart';
 export 'article_lists_model.dart';
 
@@ -184,6 +185,31 @@ class _ArticleListsWidgetState extends State<ArticleListsWidget> {
                             child: TextFormField(
                               controller: _model.textController,
                               focusNode: _model.textFieldFocusNode,
+                              onFieldSubmitted: (_) async {
+                                logFirebaseEvent(
+                                    'ARTICLE_LISTS_TextField_cb8kub2h_ON_TEXT');
+                                logFirebaseEvent('TextField_simple_search');
+                                await queryArticlesRecordOnce()
+                                    .then(
+                                      (records) => _model
+                                          .simpleSearchResults = TextSearch(
+                                        records
+                                            .map(
+                                              (record) =>
+                                                  TextSearchItem.fromTerms(
+                                                      record,
+                                                      [record.schoolName]),
+                                            )
+                                            .toList(),
+                                      )
+                                          .search(_model.textController.text)
+                                          .map((r) => r.object)
+                                          .toList(),
+                                    )
+                                    .onError((_, __) =>
+                                        _model.simpleSearchResults = [])
+                                    .whenComplete(() => safeSetState(() {}));
+                              },
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
@@ -257,348 +283,322 @@ class _ArticleListsWidgetState extends State<ArticleListsWidget> {
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                             ),
-                            child: Visibility(
-                              visible: _model.textController.text == '',
-                              child: StreamBuilder<List<AllArticlesRecord>>(
-                                stream: queryAllArticlesRecord(
-                                  queryBuilder: (allArticlesRecord) =>
-                                      allArticlesRecord
-                                          .where(
-                                            'authorSchool',
-                                            isEqualTo: FFAppState().schoolName,
-                                          )
-                                          .orderBy('Timestamp',
-                                              descending: true),
-                                  limit: 4,
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: SpinKitThreeBounce(
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          size: 50.0,
-                                        ),
+                            child: StreamBuilder<List<AllArticlesRecord>>(
+                              stream: queryAllArticlesRecord(
+                                queryBuilder: (allArticlesRecord) =>
+                                    allArticlesRecord
+                                        .where(
+                                          'authorSchool',
+                                          isEqualTo: FFAppState().schoolName,
+                                        )
+                                        .orderBy('Timestamp', descending: true),
+                                limit: 4,
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: SpinKitThreeBounce(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        size: 50.0,
                                       ),
-                                    );
-                                  }
-                                  List<AllArticlesRecord>
-                                      listViewAllArticlesRecordList =
-                                      snapshot.data!;
-
-                                  return ListView.separated(
-                                    padding: const EdgeInsets.fromLTRB(
-                                      16.0,
-                                      0,
-                                      16.0,
-                                      0,
                                     ),
-                                    scrollDirection: Axis.horizontal,
-                                    itemCount:
-                                        listViewAllArticlesRecordList.length,
-                                    separatorBuilder: (_, __) =>
-                                        const SizedBox(width: 12.0),
-                                    itemBuilder: (context, listViewIndex) {
-                                      final listViewAllArticlesRecord =
-                                          listViewAllArticlesRecordList[
-                                              listViewIndex];
-                                      return Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 16.0, 0.0, 16.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            logFirebaseEvent(
-                                                'ARTICLE_LISTS_Container_r60wagyj_ON_TAP');
-                                            logFirebaseEvent(
-                                                'Container_navigate_to');
+                                  );
+                                }
+                                List<AllArticlesRecord>
+                                    listViewAllArticlesRecordList =
+                                    snapshot.data!;
 
-                                            context.pushNamed(
-                                              'ArticleDetails',
-                                              queryParameters: {
-                                                'title': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .title,
-                                                  ParamType.String,
+                                return ListView.separated(
+                                  padding: const EdgeInsets.fromLTRB(
+                                    16.0,
+                                    0,
+                                    16.0,
+                                    0,
+                                  ),
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount:
+                                      listViewAllArticlesRecordList.length,
+                                  separatorBuilder: (_, __) =>
+                                      const SizedBox(width: 12.0),
+                                  itemBuilder: (context, listViewIndex) {
+                                    final listViewAllArticlesRecord =
+                                        listViewAllArticlesRecordList[
+                                            listViewIndex];
+                                    return Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 16.0, 0.0, 16.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          logFirebaseEvent(
+                                              'ARTICLE_LISTS_Container_r60wagyj_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Container_navigate_to');
+
+                                          context.pushNamed(
+                                            'ArticleDetails',
+                                            queryParameters: {
+                                              'title': serializeParam(
+                                                listViewAllArticlesRecord.title,
+                                                ParamType.String,
+                                              ),
+                                              'author': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .author,
+                                                ParamType.String,
+                                              ),
+                                              'image1': serializeParam(
+                                                listViewAllArticlesRecord.image,
+                                                ParamType.String,
+                                              ),
+                                              'timeStamp': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .timestamp,
+                                                ParamType.DateTime,
+                                              ),
+                                              'subtitle1': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .subtitle1,
+                                                ParamType.String,
+                                              ),
+                                              'subtitle2': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .subtitle2,
+                                                ParamType.String,
+                                              ),
+                                              'subtitle3': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .subtitle3,
+                                                ParamType.String,
+                                              ),
+                                              'content1': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .content1,
+                                                ParamType.String,
+                                              ),
+                                              'content2': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .content2,
+                                                ParamType.String,
+                                              ),
+                                              'content3': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .content3,
+                                                ParamType.String,
+                                              ),
+                                              'image2': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .image2,
+                                                ParamType.String,
+                                              ),
+                                              'image3': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .image3,
+                                                ParamType.String,
+                                              ),
+                                              'auhtorProfileImage':
+                                                  serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .authorProfileImage,
+                                                ParamType.String,
+                                              ),
+                                              'cathegories': serializeParam(
+                                                listViewAllArticlesRecord
+                                                    .cathegory,
+                                                ParamType.String,
+                                                isList: true,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 260.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            boxShadow: const [
+                                              BoxShadow(
+                                                blurRadius: 4.0,
+                                                color: Color(0x33000000),
+                                                offset: Offset(
+                                                  0.0,
+                                                  2.0,
                                                 ),
-                                                'author': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .author,
-                                                  ParamType.String,
-                                                ),
-                                                'image1': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .image,
-                                                  ParamType.String,
-                                                ),
-                                                'timeStamp': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .timestamp,
-                                                  ParamType.DateTime,
-                                                ),
-                                                'subtitle1': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .subtitle1,
-                                                  ParamType.String,
-                                                ),
-                                                'subtitle2': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .subtitle2,
-                                                  ParamType.String,
-                                                ),
-                                                'subtitle3': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .subtitle3,
-                                                  ParamType.String,
-                                                ),
-                                                'content1': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .content1,
-                                                  ParamType.String,
-                                                ),
-                                                'content2': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .content2,
-                                                  ParamType.String,
-                                                ),
-                                                'content3': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .content3,
-                                                  ParamType.String,
-                                                ),
-                                                'image2': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .image2,
-                                                  ParamType.String,
-                                                ),
-                                                'image3': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .image3,
-                                                  ParamType.String,
-                                                ),
-                                                'auhtorProfileImage':
-                                                    serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .authorProfileImage,
-                                                  ParamType.String,
-                                                ),
-                                                'cathegories': serializeParam(
-                                                  listViewAllArticlesRecord
-                                                      .cathegory,
-                                                  ParamType.String,
-                                                  isList: true,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          },
-                                          child: Container(
-                                            width: 260.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              boxShadow: const [
-                                                BoxShadow(
-                                                  blurRadius: 4.0,
-                                                  color: Color(0x33000000),
-                                                  offset: Offset(
-                                                    0.0,
-                                                    2.0,
-                                                  ),
-                                                )
-                                              ],
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(8.0),
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Expanded(
-                                                    child: Container(
-                                                      width: double.infinity,
-                                                      height: 120.0,
-                                                      decoration: BoxDecoration(
+                                              )
+                                            ],
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Expanded(
+                                                  child: Container(
+                                                    width: double.infinity,
+                                                    height: 120.0,
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .accent1,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      border: Border.all(
                                                         color:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .accent1,
+                                                                .primary,
+                                                      ),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(2.0),
+                                                      child: ClipRRect(
                                                         borderRadius:
                                                             BorderRadius
-                                                                .circular(8.0),
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                        ),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            const EdgeInsets.all(2.0),
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      6.0),
-                                                          child:
-                                                              CachedNetworkImage(
-                                                            fadeInDuration:
-                                                                const Duration(
-                                                                    milliseconds:
-                                                                        500),
-                                                            fadeOutDuration:
-                                                                const Duration(
-                                                                    milliseconds:
-                                                                        500),
-                                                            imageUrl:
-                                                                listViewAllArticlesRecord
-                                                                    .image,
-                                                            width: 120.0,
-                                                            height: 120.0,
-                                                            fit: BoxFit.cover,
-                                                          ),
+                                                                .circular(6.0),
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          fadeInDuration:
+                                                              const Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                          fadeOutDuration:
+                                                              const Duration(
+                                                                  milliseconds:
+                                                                      500),
+                                                          imageUrl:
+                                                              listViewAllArticlesRecord
+                                                                  .image,
+                                                          width: 120.0,
+                                                          height: 120.0,
+                                                          fit: BoxFit.cover,
                                                         ),
                                                       ),
                                                     ),
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(4.0, 8.0,
-                                                                4.0, 4.0),
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          listViewAllArticlesRecord
-                                                              .title,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Readex Pro',
-                                                                letterSpacing:
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          4.0, 8.0, 4.0, 4.0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        listViewAllArticlesRecord
+                                                            .title,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Readex Pro',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
                                                                     0.0,
+                                                                    4.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Wrap(
+                                                          spacing: 0.0,
+                                                          runSpacing: 0.0,
+                                                          alignment:
+                                                              WrapAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              WrapCrossAlignment
+                                                                  .start,
+                                                          direction:
+                                                              Axis.horizontal,
+                                                          runAlignment:
+                                                              WrapAlignment
+                                                                  .start,
+                                                          verticalDirection:
+                                                              VerticalDirection
+                                                                  .down,
+                                                          clipBehavior:
+                                                              Clip.none,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          12.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                listViewAllArticlesRecord
+                                                                    .author,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .labelSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Readex Pro',
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                    ),
                                                               ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Wrap(
-                                                            spacing: 0.0,
-                                                            runSpacing: 0.0,
-                                                            alignment:
-                                                                WrapAlignment
-                                                                    .start,
-                                                            crossAxisAlignment:
-                                                                WrapCrossAlignment
-                                                                    .start,
-                                                            direction:
-                                                                Axis.horizontal,
-                                                            runAlignment:
-                                                                WrapAlignment
-                                                                    .start,
-                                                            verticalDirection:
-                                                                VerticalDirection
-                                                                    .down,
-                                                            clipBehavior:
-                                                                Clip.none,
-                                                            children: [
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            12.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  listViewAllArticlesRecord
-                                                                      .author,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                                ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          4.0,
+                                                                          0.0),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .chat_bubble_outline_rounded,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 16.0,
                                                               ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            4.0,
-                                                                            0.0),
-                                                                child: Icon(
-                                                                  Icons
-                                                                      .chat_bubble_outline_rounded,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  size: 16.0,
-                                                                ),
-                                                              ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            16.0,
-                                                                            0.0),
-                                                                child: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    'ak5gx43l' /* 24 */,
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .labelSmall
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Readex Pro',
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Text(
-                                                                dateTimeFormat(
-                                                                  "relative",
-                                                                  listViewAllArticlesRecord
-                                                                      .timestamp!,
-                                                                  locale: FFLocalizations.of(
-                                                                          context)
-                                                                      .languageCode,
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          16.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'ak5gx43l' /* 24 */,
                                                                 ),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -610,40 +610,59 @@ class _ArticleListsWidgetState extends State<ArticleListsWidget> {
                                                                           0.0,
                                                                     ),
                                                               ),
-                                                              Padding(
-                                                                padding:
-                                                                    const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            0.0,
-                                                                            4.0,
-                                                                            0.0),
-                                                                child: Icon(
-                                                                  Icons
-                                                                      .keyboard_control_rounded,
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryText,
-                                                                  size: 16.0,
-                                                                ),
+                                                            ),
+                                                            Text(
+                                                              dateTimeFormat(
+                                                                "relative",
+                                                                listViewAllArticlesRecord
+                                                                    .timestamp!,
+                                                                locale: FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode,
                                                               ),
-                                                            ],
-                                                          ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Readex Pro',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          4.0,
+                                                                          0.0),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .keyboard_control_rounded,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryText,
+                                                                size: 16.0,
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ].divide(const SizedBox(
-                                                          height: 4.0)),
-                                                    ),
+                                                      ),
+                                                    ].divide(
+                                                        const SizedBox(height: 4.0)),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ),
-                                      );
-                                    },
-                                  );
-                                },
-                              ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
                             ),
                           ),
                           Padding(

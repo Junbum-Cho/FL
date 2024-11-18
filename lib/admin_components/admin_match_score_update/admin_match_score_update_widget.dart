@@ -1,4 +1,3 @@
-import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -12,13 +11,11 @@ class AdminMatchScoreUpdateWidget extends StatefulWidget {
     required this.matchDate,
     required this.matchOpponent,
     required this.opponentImage,
-    required this.isUpdated,
   });
 
   final String? matchDate;
   final String? matchOpponent;
   final String? opponentImage;
-  final IsScoreUpdated? isUpdated;
 
   @override
   State<AdminMatchScoreUpdateWidget> createState() =>

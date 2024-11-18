@@ -3,6 +3,7 @@ import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -208,21 +209,13 @@ class _AskUserAccountWidgetState extends State<AskUserAccountWidget> {
                                 logFirebaseEvent(
                                     'ASK_USER_ACCOUNT_LOG_IN_FOR_INTERNAL_USE');
                                 logFirebaseEvent('Button_custom_action');
-                                await actions.redirectToVeracrossLogin();
-                                logFirebaseEvent('Button_custom_action');
-                                _model.authCode =
-                                    await actions.handleFirebaseDynamicLink();
-                                logFirebaseEvent('Button_custom_action');
-                                _model.accessToken =
-                                    await actions.exchangeAuthCodeForToken1(
-                                  _model.authCode!,
+                                unawaited(
+                                  () async {
+                                    await actions.launchInExternalBrowser(
+                                      'https://accounts.veracross.com/api-sandbox/oauth/authorize?client_id=2c62ed1578d44185b7fe258ceb6fbbd8&response_type=code&redirect_uri=https%3A%2F%2Ffoundersleagueportal.page.link%2Fvauth&scope=sso',
+                                    );
+                                  }(),
                                 );
-                                logFirebaseEvent('Button_update_app_state');
-                                FFAppState().userAccessToken =
-                                    _model.accessToken!;
-                                safeSetState(() {});
-
-                                safeSetState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 'np72upe8' /* Log in for internal users */,

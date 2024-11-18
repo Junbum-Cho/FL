@@ -1,3 +1,4 @@
+import '/components/tentative_instagram_view_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/latest_components/latest_video/latest_video_widget.dart';
 import '/match_related/comment/comment_widget.dart';
@@ -26,6 +27,8 @@ class MatchOverviewModel extends FlutterFlowModel<MatchOverviewWidget> {
   late LatestVideoModel latestVideoModel1;
   // Model for LatestVideo component.
   late LatestVideoModel latestVideoModel2;
+  // Model for TentativeInstagramView component.
+  late TentativeInstagramViewModel tentativeInstagramViewModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
@@ -37,6 +40,8 @@ class MatchOverviewModel extends FlutterFlowModel<MatchOverviewWidget> {
   void initState(BuildContext context) {
     latestVideoModel1 = createModel(context, () => LatestVideoModel());
     latestVideoModel2 = createModel(context, () => LatestVideoModel());
+    tentativeInstagramViewModel =
+        createModel(context, () => TentativeInstagramViewModel());
     commentModels = FlutterFlowDynamicModels(() => CommentModel());
   }
 
@@ -45,6 +50,7 @@ class MatchOverviewModel extends FlutterFlowModel<MatchOverviewWidget> {
     tabBarController?.dispose();
     latestVideoModel1.dispose();
     latestVideoModel2.dispose();
+    tentativeInstagramViewModel.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
 

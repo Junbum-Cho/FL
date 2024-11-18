@@ -1,6 +1,7 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/components/student_score_widget.dart';
+import '/components/tentative_instagram_view_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -1216,17 +1217,26 @@ class _MatchOverviewWidgetState extends State<MatchOverviewWidget>
                                             ),
                                           ],
                                         ),
-                                        Text(
-                                          FFLocalizations.of(context).getText(
-                                            'met4rxa3' /* Tab View 2 */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                fontSize: 32.0,
-                                                letterSpacing: 0.0,
+                                        Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            wrapWithModel(
+                                              model: _model
+                                                  .tentativeInstagramViewModel,
+                                              updateCallback: () =>
+                                                  safeSetState(() {}),
+                                              child:
+                                                  TentativeInstagramViewWidget(
+                                                accountName: 'dd',
+                                                accountImage:
+                                                    widget.schoolOneImage!,
+                                                postContent: 'dd',
+                                                postImage:
+                                                    widget.schoolOneImage!,
+                                                timestamp: 'dd',
                                               ),
+                                            ),
+                                          ],
                                         ),
                                         Padding(
                                           padding:

@@ -6,9 +6,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_video_player.dart';
 import '/flutter_flow/form_field_controller.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
@@ -796,7 +796,7 @@ class _TeamOverviewWidgetState extends State<TeamOverviewWidget>
                                                 ],
                                                 carouselController: _model
                                                         .carouselController ??=
-                                                    CarouselController(),
+                                                    CarouselSliderController(),
                                                 options: CarouselOptions(
                                                   initialPage: 1,
                                                   viewportFraction: 0.7,

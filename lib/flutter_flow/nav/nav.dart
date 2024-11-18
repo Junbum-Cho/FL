@@ -114,7 +114,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'FL',
           path: '/fl',
-          requireAuth: true,
           builder: (context, params) =>
               params.isEmpty ? const NavBarPage(initialPage: 'FL') : const FlWidget(),
         ),
@@ -132,19 +131,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Results',
           path: '/results',
-          requireAuth: true,
           builder: (context, params) => const ResultsWidget(),
         ),
         FFRoute(
           name: 'schoolList',
           path: '/schoolList',
-          requireAuth: true,
           builder: (context, params) => const SchoolListWidget(),
         ),
         FFRoute(
           name: 'EachSchoolProfile',
           path: '/eachSchoolProfile',
-          requireAuth: true,
           builder: (context, params) => EachSchoolProfileWidget(
             schoolName: params.getParam(
               'schoolName',
@@ -171,7 +167,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Profiles',
           path: '/profiles',
-          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'Profiles')
               : const ProfilesWidget(),
@@ -179,19 +174,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'NotificationSettings',
           path: '/notificationSettings',
-          requireAuth: true,
           builder: (context, params) => const NotificationSettingsWidget(),
         ),
         FFRoute(
           name: 'UploadArticle',
           path: '/uploadArticle',
-          requireAuth: true,
           builder: (context, params) => const UploadArticleWidget(),
         ),
         FFRoute(
           name: 'ArticleDetails',
           path: '/articleDetails',
-          requireAuth: true,
           builder: (context, params) => ArticleDetailsWidget(
             title: params.getParam(
               'title',
@@ -255,13 +247,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'BugReport',
           path: '/bugReport',
-          requireAuth: true,
           builder: (context, params) => const BugReportWidget(),
         ),
         FFRoute(
           name: 'TeamOverview',
           path: '/teamOverview',
-          requireAuth: true,
           builder: (context, params) => TeamOverviewWidget(
             sportsName: params.getParam(
               'sportsName',
@@ -304,7 +294,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'MatchPreview',
           path: '/matchPreview',
-          requireAuth: true,
           builder: (context, params) => MatchPreviewWidget(
             schoolOne: params.getParam(
               'schoolOne',
@@ -355,13 +344,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'AthleticTeams',
           path: '/athleticTeams',
-          requireAuth: true,
           builder: (context, params) => const AthleticTeamsWidget(),
         ),
         FFRoute(
           name: 'MatchOverview',
           path: '/matchOverview',
-          requireAuth: true,
           builder: (context, params) => MatchOverviewWidget(
             sportsType: params.getParam(
               'sportsType',
@@ -425,13 +412,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'Fixtures',
           path: '/fixtures',
-          requireAuth: true,
           builder: (context, params) => const FixturesWidget(),
         ),
         FFRoute(
           name: 'Statistics',
           path: '/statistics',
-          requireAuth: true,
           builder: (context, params) => StatisticsWidget(
             mostWinsTeam: params.getParam(
               'mostWinsTeam',
@@ -446,19 +431,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'AdminActivity',
           path: '/adminActivity',
-          requireAuth: true,
           builder: (context, params) => const AdminActivityWidget(),
         ),
         FFRoute(
           name: 'UserOnboarding',
           path: '/userOnboarding',
-          requireAuth: true,
           builder: (context, params) => const UserOnboardingWidget(),
         ),
         FFRoute(
           name: 'AdminMatchSchedule',
           path: '/adminMatchSchedule',
-          requireAuth: true,
           builder: (context, params) => AdminMatchScheduleWidget(
             facultyTeam: params.getParam(
               'facultyTeam',
@@ -469,7 +451,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'AddGame',
           path: '/addGame',
-          requireAuth: true,
           builder: (context, params) => AddGameWidget(
             facultyTeam: params.getParam(
               'facultyTeam',
@@ -498,13 +479,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'AdminUpdateScore',
           path: '/adminUpdateScore',
-          requireAuth: true,
           builder: (context, params) => const AdminUpdateScoreWidget(),
         ),
         FFRoute(
           name: 'AdminUpdateScore2',
           path: '/adminUpdateScore2',
-          requireAuth: true,
           builder: (context, params) => AdminUpdateScore2Widget(
             schoolName: params.getParam(
               'schoolName',
@@ -535,91 +514,76 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'AdmineTeamPlayerList',
           path: '/admineTeamPlayerList',
-          requireAuth: true,
           builder: (context, params) => const AdmineTeamPlayerListWidget(),
         ),
         FFRoute(
           name: 'AdminAddPlayers',
           path: '/adminAddPlayers',
-          requireAuth: true,
           builder: (context, params) => const AdminAddPlayersWidget(),
         ),
         FFRoute(
           name: 'chat_ai_Screen',
           path: '/chatAiScreen',
-          requireAuth: true,
           builder: (context, params) => const ChatAiScreenWidget(),
         ),
         FFRoute(
           name: 'notifications_List',
           path: '/notificationsList',
-          requireAuth: true,
           builder: (context, params) => const NotificationsListWidget(),
         ),
         FFRoute(
           name: 'notification_Create',
           path: '/notificationCreate',
-          requireAuth: true,
           builder: (context, params) => const NotificationCreateWidget(),
         ),
         FFRoute(
           name: 'ArticleLists',
           path: '/articleLists',
-          requireAuth: true,
           builder: (context, params) => const ArticleListsWidget(),
         ),
         FFRoute(
           name: 'AdminStatisticsUpdate',
           path: '/adminStatisticsUpdate',
-          requireAuth: true,
           builder: (context, params) => const AdminStatisticsUpdateWidget(),
         ),
         FFRoute(
           name: 'VideoPlayer',
           path: '/videoPlayer',
-          requireAuth: true,
           builder: (context, params) => const VideoPlayerWidget(),
         ),
         FFRoute(
           name: 'VideoPlaying',
           path: '/videoPlaying',
-          requireAuth: true,
           builder: (context, params) => const VideoPlayingWidget(),
         ),
         FFRoute(
           name: 'AdminVideoUpload',
           path: '/adminVideoUpload',
-          requireAuth: true,
           builder: (context, params) => const AdminVideoUploadWidget(),
         ),
         FFRoute(
           name: 'EditProfile',
           path: '/editProfile',
-          requireAuth: true,
           builder: (context, params) => const EditProfileWidget(),
         ),
         FFRoute(
           name: 'AdminUpdateBanner',
           path: '/adminUpdateBanner',
-          requireAuth: true,
           builder: (context, params) => const AdminUpdateBannerWidget(),
         ),
         FFRoute(
           name: 'AdminDashBoard',
           path: '/adminDashBoard',
-          requireAuth: true,
           builder: (context, params) => const AdminDashBoardWidget(),
         ),
         FFRoute(
           name: 'LivestreamVideos',
           path: '/livestreamVideos',
-          requireAuth: true,
           builder: (context, params) => const LivestreamVideosWidget(),
         ),
         FFRoute(
           name: 'AdminAskGoogleCalendar',
           path: '/adminAskGoogleCalendar',
-          requireAuth: true,
           builder: (context, params) => AdminAskGoogleCalendarWidget(
             title: params.getParam(
               'title',
@@ -642,13 +606,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'LivestreamLists',
           path: '/livestreamLists',
-          requireAuth: true,
           builder: (context, params) => const LivestreamListsWidget(),
         ),
         FFRoute(
           name: 'LiveStreamPage',
           path: '/liveStreamPage',
-          requireAuth: true,
           builder: (context, params) => LiveStreamPageWidget(
             streamName: params.getParam(
               'streamName',
@@ -663,13 +625,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'LiveStreamViewer',
           path: '/liveStreamViewer',
-          requireAuth: true,
           builder: (context, params) => LiveStreamViewerWidget(
             url: params.getParam(
               'url',
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'LoginSuccessful',
+          path: '/vauth',
+          builder: (context, params) => const LoginSuccessfulWidget(),
+        ),
+        FFRoute(
+          name: 'RosterDetail',
+          path: '/rosterDetail',
+          builder: (context, params) => const RosterDetailWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],
@@ -924,10 +895,33 @@ class _RouteErrorBuilderState extends State<_RouteErrorBuilder> {
   @override
   void initState() {
     super.initState();
+
     // Handle erroneous links from Firebase Dynamic Links.
+
+    String? location;
+
+    /*
+    Handle `links` routes that have dynamic-link entangled with deep-link 
+    */
+    if (widget.state.uri.toString().startsWith('/link') &&
+        widget.state.uri.queryParameters.containsKey('deep_link_id')) {
+      final deepLinkId = widget.state.uri.queryParameters['deep_link_id'];
+      if (deepLinkId != null) {
+        final deepLinkUri = Uri.parse(deepLinkId);
+        final link = deepLinkUri.toString();
+        final host = deepLinkUri.host;
+        location = link.split(host).last;
+      }
+    }
+
     if (widget.state.uri.toString().startsWith('/link') &&
         widget.state.uri.toString().contains('request_ip_version')) {
-      SchedulerBinding.instance.addPostFrameCallback((_) => context.go('/'));
+      location = '/';
+    }
+
+    if (location != null) {
+      SchedulerBinding.instance
+          .addPostFrameCallback((_) => context.go(location!));
     }
   }
 

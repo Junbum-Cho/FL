@@ -1544,59 +1544,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                                     0.0,
                                                                     16.0),
                                                         child: FFButtonWidget(
-                                                          onPressed: () async {
-                                                            logFirebaseEvent(
-                                                                'SIGN_UP_PAGE_ButtonTwo_ON_TAP');
-                                                            logFirebaseEvent(
-                                                                'ButtonTwo_update_page_state');
-                                                            _model.email = _model
-                                                                .emailAddressCreateThreeTextController
-                                                                .text;
-                                                            safeSetState(() {});
-                                                            logFirebaseEvent(
-                                                                'ButtonTwo_auth');
-                                                            GoRouter.of(context)
-                                                                .prepareAuthEvent();
-                                                            if (_model
-                                                                    .passwordCreateThreeTextController
-                                                                    .text !=
-                                                                _model
-                                                                    .passwordConfirmThreeTextController
-                                                                    .text) {
-                                                              ScaffoldMessenger
-                                                                      .of(context)
-                                                                  .showSnackBar(
-                                                                const SnackBar(
-                                                                  content: Text(
-                                                                    'Passwords don\'t match!',
-                                                                  ),
-                                                                ),
-                                                              );
-                                                              return;
-                                                            }
-
-                                                            final user =
-                                                                await authManager
-                                                                    .createAccountWithEmail(
-                                                              context,
-                                                              _model
-                                                                  .emailAddressCreateThreeTextController
-                                                                  .text,
-                                                              _model
-                                                                  .passwordCreateThreeTextController
-                                                                  .text,
-                                                            );
-                                                            if (user == null) {
-                                                              return;
-                                                            }
-
-                                                            logFirebaseEvent(
-                                                                'ButtonTwo_navigate_to');
-
-                                                            context.goNamedAuth(
-                                                                'UserOnboarding',
-                                                                context
-                                                                    .mounted);
+                                                          onPressed: () {
+                                                            print(
+                                                                'ButtonTwo pressed ...');
                                                           },
                                                           text: FFLocalizations
                                                                   .of(context)

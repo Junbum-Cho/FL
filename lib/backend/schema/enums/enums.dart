@@ -1,7 +1,13 @@
 import 'package:collection/collection.dart';
 
-enum IsScoreUpdated {
-  isUpdated,
+enum Role {
+  faculty,
+  student,
+  studentAuthor,
+}
+
+enum PersonId {
+  id,
 }
 
 extension FFEnumExtensions<T extends Enum> on T {
@@ -15,8 +21,10 @@ extension FFEnumListExtensions<T extends Enum> on Iterable<T> {
 
 T? deserializeEnum<T>(String? value) {
   switch (T) {
-    case (IsScoreUpdated):
-      return IsScoreUpdated.values.deserialize(value) as T?;
+    case (Role):
+      return Role.values.deserialize(value) as T?;
+    case (PersonId):
+      return PersonId.values.deserialize(value) as T?;
     default:
       return null;
   }

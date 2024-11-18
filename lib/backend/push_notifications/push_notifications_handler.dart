@@ -260,6 +260,8 @@ final parametersBuilderMap =
           'url': getParameter<String>(data, 'url'),
         },
       ),
+  'LoginSuccessful': ParameterData.none(),
+  'RosterDetail': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

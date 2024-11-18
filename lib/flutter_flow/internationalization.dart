@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -78,18 +79,47 @@ class FFLocalizations {
   };
 }
 
+/// Used if the locale is not supported by GlobalMaterialLocalizations.
+class FallbackMaterialLocalizationDelegate
+    extends LocalizationsDelegate<MaterialLocalizations> {
+  const FallbackMaterialLocalizationDelegate();
+
+  @override
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
+
+  @override
+  Future<MaterialLocalizations> load(Locale locale) async =>
+      SynchronousFuture<MaterialLocalizations>(
+        const DefaultMaterialLocalizations(),
+      );
+
+  @override
+  bool shouldReload(FallbackMaterialLocalizationDelegate old) => false;
+}
+
+/// Used if the locale is not supported by GlobalCupertinoLocalizations.
+class FallbackCupertinoLocalizationDelegate
+    extends LocalizationsDelegate<CupertinoLocalizations> {
+  const FallbackCupertinoLocalizationDelegate();
+
+  @override
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
+
+  @override
+  Future<CupertinoLocalizations> load(Locale locale) =>
+      SynchronousFuture<CupertinoLocalizations>(
+        const DefaultCupertinoLocalizations(),
+      );
+
+  @override
+  bool shouldReload(FallbackCupertinoLocalizationDelegate old) => false;
+}
+
 class FFLocalizationsDelegate extends LocalizationsDelegate<FFLocalizations> {
   const FFLocalizationsDelegate();
 
   @override
-  bool isSupported(Locale locale) {
-    final language = locale.toString();
-    return FFLocalizations.languages().contains(
-      language.endsWith('_')
-          ? language.substring(0, language.length - 1)
-          : language,
-    );
-  }
+  bool isSupported(Locale locale) => _isSupportedLocale(locale);
 
   @override
   Future<FFLocalizations> load(Locale locale) =>
@@ -105,6 +135,15 @@ Locale createLocale(String language) => language.contains('_')
         scriptCode: language.split('_').last,
       )
     : Locale(language);
+
+bool _isSupportedLocale(Locale locale) {
+  final language = locale.toString();
+  return FFLocalizations.languages().contains(
+    language.endsWith('_')
+        ? language.substring(0, language.length - 1)
+        : language,
+  );
+}
 
 final kTranslationsMap = <Map<String, Map<String, String>>>[
   // AskUserAccount
@@ -280,7 +319,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'v6z0xifj': {
       'en': 'More Videos',
       'es': 'Más vídeos',
-      'ko': '더 많은 동영상',
+      'ko': '더 많은 영상',
       'zh_Hans': '更多视频',
     },
     'rz8t5ba6': {
@@ -331,7 +370,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'a380dit2': {
       'en': 'FL',
       'es': 'Florida',
-      'ko': '플',
+      'ko': '플.',
       'zh_Hans': '佛罗里达州',
     },
   },
@@ -362,7 +401,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Enjoy each contents specialized only for each Founders League students.',
       'es':
           'Disfruta de cada contenido especializado solo para cada alumno de Founders League.',
-      'ko': '파운더스 리그 학생들을 위해 특별히 제작된 콘텐츠를 즐겨보세요.',
+      'ko': '파운더스 리그 각 학생만을 위해 특화된 콘텐츠를 즐겨보세요.',
       'zh_Hans': '享受仅为每个创始人联盟学生专门提供的每个内容。',
     },
     '7rpu0e28': {
@@ -401,7 +440,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'mjra6w1t': {
       'en': 'FL',
       'es': 'Florida',
-      'ko': '플',
+      'ko': '플.',
       'zh_Hans': '佛罗里达州',
     },
     'eg3ytnuw': {
@@ -482,7 +521,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'wjjnrgyn': {
       'en': 'Avon Old Farms',
       'es': 'Antiguas granjas de Avon',
-      'ko': '에이번 올드 팜스',
+      'ko': '에이번 올드 팜',
       'zh_Hans': '雅芳旧农场',
     },
     '4dqolzs5': {
@@ -500,7 +539,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'r52risme': {
       'en': 'Miss Porter\'s',
       'es': 'De la señorita Porter',
-      'ko': '미스 포터의',
+      'ko': '미스 포터',
       'zh_Hans': '波特小姐',
     },
     'xfm4i9bf': {
@@ -596,7 +635,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'hq25kqsa': {
       'en': 'Avon Old Farms',
       'es': 'Antiguas granjas de Avon',
-      'ko': '에이번 올드 팜스',
+      'ko': '에이번 올드 팜',
       'zh_Hans': '雅芳旧农场',
     },
     'sa591w5s': {
@@ -614,7 +653,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '2we9jp05': {
       'en': 'Miss Porter\'s',
       'es': 'De la señorita Porter',
-      'ko': '미스 포터의',
+      'ko': '미스 포터',
       'zh_Hans': '波特小姐',
     },
     'kf8wo05g': {
@@ -710,7 +749,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'kxn9zzsu': {
       'en': 'Avon Old Farms',
       'es': 'Antiguas granjas de Avon',
-      'ko': '에이번 올드 팜스',
+      'ko': '에이번 올드 팜',
       'zh_Hans': '雅芳旧农场',
     },
     '4l2n89w3': {
@@ -728,7 +767,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ip999alx': {
       'en': 'Miss Porter\'s',
       'es': 'De la señorita Porter',
-      'ko': '미스 포터의',
+      'ko': '미스 포터',
       'zh_Hans': '波特小姐',
     },
     'x6pijlfq': {
@@ -1282,7 +1321,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ef1msusr': {
       'en': 'Write your first paragraph here...',
       'es': 'Escribe tu primer párrafo aquí...',
-      'ko': '첫 번째 문단을 여기에 작성하세요...',
+      'ko': '여기에 첫 번째 문단을 작성하세요...',
       'zh_Hans': '在这里写下你的第一段...',
     },
     'u1gsl0nn': {
@@ -1442,7 +1481,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '6mqaiy4v': {
       'en': '2024-2025',
-      'es': '2025-08-25T04:00:00Z',
+      'es': '25/08/2025 04:00:00Z',
       'ko': '2025-08-25T04:00:00Z',
       'zh_Hans': '2025-08-25T04：00：00Z',
     },
@@ -1490,7 +1529,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9c0nsu4h': {
       'en': '2017-2018',
-      'es': '18-08-2018 04:00:00Z',
+      'es': '18/08/2018 04:00:00Z',
       'ko': '2018-08-18T04:00:00Z',
       'zh_Hans': '2018-08-18T04：00：00Z',
     },
@@ -1508,7 +1547,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4w1re01k': {
       'en': 'Select Season...',
-      'es': 'Seleccionar temporada...',
+      'es': 'Seleccione temporada...',
       'ko': '시즌을 선택하세요...',
       'zh_Hans': '选择季节...',
     },
@@ -1724,12 +1763,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Oficial',
       'ko': '공식적인',
       'zh_Hans': '官方的',
-    },
-    'met4rxa3': {
-      'en': 'Tab View 2',
-      'es': 'Vista de pestaña 2',
-      'ko': '탭 보기 2',
-      'zh_Hans': '标签视图 2',
     },
     '7mkzv01t': {
       'en': 'Community',
@@ -2014,7 +2047,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Please Tell About yourself so that we provide high-quality service.',
       'es':
           'Cuéntenos algo sobre usted para que podamos brindarle un servicio de alta calidad.',
-      'ko': '고품질의 서비스를 제공할 수 있도록 귀하에 대한 정보를 알려주시기 바랍니다.',
+      'ko': '고품질의 서비스를 제공할 수 있도록 본인에 대한 정보를 알려주세요.',
       'zh_Hans': '请介绍一下您自己，以便我们提供高质量的服务。',
     },
     'xu9mps4s': {
@@ -2024,52 +2057,35 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '最后一步',
     },
     'ki1en7xe': {
-      'en': 'Let\'s finish the onboarding by filling up the form below. ',
+      'en': 'Let\'s finish the onboarding by confirming your details below. ',
       'es':
           'Terminemos la incorporación llenando el formulario a continuación.',
       'ko': '아래 양식을 작성하여 온보딩을 마무리해 보세요.',
       'zh_Hans': '让我们通过填写下面的表格来完成入职培训。',
     },
-    'yutjqw17': {
-      'en':
-          'Since this is a Beta Test Version, the last step of the onboarding process is not yet user friendly. Please follow the below steps and thank for your cooperation:)',
-      'es':
-          'Dado que se trata de una versión de prueba beta, el último paso del proceso de incorporación aún no es fácil de usar. Siga los pasos a continuación y gracias por su cooperación:)',
-      'ko':
-          '베타 테스트 버전이기 때문에 온보딩 프로세스의 마지막 단계는 아직 사용자에게 친숙하지 않습니다. 아래 단계를 따르시고 협조해 주셔서 감사합니다:)',
-      'zh_Hans': '由于这是 Beta 测试版本，入门流程的最后一步还不太方便用户使用。请按照以下步骤操作，感谢您的合作：)',
+    'yz3xhs2k': {
+      'en': 'Please confirm if your information.',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
     },
-    't8w5cc3g': {
-      'en': 'Which School Are You Associated With? ',
-      'es': '¿A qué escuela estás asociado?',
-      'ko': '당신은 어떤 학교에 소속되어 있나요?',
-      'zh_Hans': '您隶属于哪所学校？',
+    'w4ily0cn': {
+      'en': 'Yes',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
     },
-    'd2nqjnz6': {
-      'en': 'Choose my School',
-      'es': 'Elige mi escuela',
-      'ko': '내 학교를 선택하세요',
-      'zh_Hans': '选择我的学校',
+    'uor4jn5s': {
+      'en': 'No',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
     },
-    'ucrmx7a9': {
-      'en': 'Check if you are a admin. ',
-      'es': 'Comprueba si eres administrador.',
-      'ko': '귀하가 관리자인지 확인하세요.',
-      'zh_Hans': '检查您是否是管理员。',
-    },
-    'y9afvtl8': {
-      'en':
-          'We will set your coaching team as Varsity Hockey as default for now if you are a faculty.',
-      'es':
-          'Estableceremos su equipo de entrenamiento como Hockey universitario como predeterminado por ahora si es miembro del personal docente.',
-      'ko': '귀하가 교수진인 경우 현재 귀하의 코칭팀은 기본적으로 Varsity Hockey로 설정됩니다.',
-      'zh_Hans': '如果您是一名教职员工，我们将暂时将您的教练团队默认为 Varsity Hockey。',
-    },
-    'zuvys6eb': {
+    'bsz0relg': {
       'en': 'Continue',
-      'es': 'Continuar',
-      'ko': '계속하다',
-      'zh_Hans': '继续',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
     },
     'mvxxkf2k': {
       'en': 'Home',
@@ -2159,7 +2175,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Loomis Chaffee School',
       'es': 'Escuela Loomis Chaffee',
       'ko': '루미스 채피 스쿨',
-      'zh_Hans': '卢米斯查菲学校',
+      'zh_Hans': '洛米斯查菲学校',
     },
     's125iq9d': {
       'en': 'Miss Porter\'s School',
@@ -2479,7 +2495,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'General Announcement',
       'es': 'Anuncio general',
       'ko': '일반 공지',
-      'zh_Hans': '公告',
+      'zh_Hans': '一般公告',
     },
     'c9kejmyb': {
       'en': 'Upload Screenshot',
@@ -2648,7 +2664,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es':
           'Actualizar las cuatro categorías principales de atletismo escolar.',
       'ko': '학교 운동의 4가지 주요 종목을 업데이트합니다.',
-      'zh_Hans': '更新学校体育活动的四个主要类别。',
+      'zh_Hans': '更新学校体育活动的四大主要类别。',
     },
     'ogs490mv': {
       'en': 'Related',
@@ -2904,7 +2920,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Loomis Chaffee School',
       'es': 'Escuela Loomis Chaffee',
       'ko': '루미스 채피 스쿨',
-      'zh_Hans': '卢米斯查菲学校',
+      'zh_Hans': '洛米斯查菲学校',
     },
     'zswafwha': {
       'en': 'Miss Porter\'s School',
@@ -3035,7 +3051,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'spit582x': {
       'en': 'Review the details below of your recent projects.',
       'es': 'Revise a continuación los detalles de sus proyectos recientes.',
-      'ko': '최근 프로젝트의 세부 정보를 아래에서 검토해 보세요.',
+      'ko': '최근 프로젝트에 대한 자세한 내용을 아래에서 살펴보세요.',
       'zh_Hans': '查看以下您最近的项目的详细信息。',
     },
     'dmkjfujm': {
@@ -3301,7 +3317,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'h1ola7ui': {
       'en': 'Started ',
       'es': 'Comenzó',
-      'ko': '시작함',
+      'ko': '시작하다',
       'zh_Hans': '已开始',
     },
     'v43xp4uw': {
@@ -3419,218 +3435,476 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Live Sports Videos',
       'es': 'Vídeos de deportes en directo',
       'ko': '라이브 스포츠 비디오',
-      'zh_Hans': '',
+      'zh_Hans': '现场体育视频',
     },
     '076gxatx': {
       'en': 'Basketball Game',
       'es': 'Partido de baloncesto',
       'ko': '농구 경기',
-      'zh_Hans': '',
+      'zh_Hans': '篮球比赛',
     },
     'aaftmy72': {
       'en': 'Live Now',
       'es': 'Vive ahora',
       'ko': '지금 라이브',
-      'zh_Hans': '',
+      'zh_Hans': '現在',
     },
     'o69mifos': {
       'en': 'Soccer Match',
       'es': 'Partido de fútbol',
       'ko': '축구 경기',
-      'zh_Hans': '',
+      'zh_Hans': '足球比赛',
     },
     'gu9mvofc': {
       'en': 'Live Now',
       'es': 'Vive ahora',
       'ko': '지금 라이브',
-      'zh_Hans': '',
+      'zh_Hans': '現在',
     },
     '0p2e18u6': {
       'en': 'Baseball Game',
       'es': 'Juego de béisbol',
       'ko': '야구 경기',
-      'zh_Hans': '',
+      'zh_Hans': '棒球比赛',
     },
     'oo1t01ec': {
       'en': 'Live Now',
       'es': 'Vive ahora',
       'ko': '지금 라이브',
-      'zh_Hans': '',
+      'zh_Hans': '現在',
     },
     'bggsrr2d': {
       'en': 'Track and Field',
       'es': 'Atletismo',
       'ko': '육상 경기',
-      'zh_Hans': '',
+      'zh_Hans': '田径',
     },
     'vdb1ezmt': {
       'en': 'Live Now',
       'es': 'Vive ahora',
       'ko': '지금 라이브',
-      'zh_Hans': '',
+      'zh_Hans': '現在',
     },
     'apezdpbu': {
       'en': 'Swimming Competition',
       'es': 'Competición de natación',
       'ko': '수영 경기',
-      'zh_Hans': '',
+      'zh_Hans': '游泳比赛',
     },
     '869y1pvi': {
       'en': 'Live Now',
       'es': 'Vive ahora',
       'ko': '지금 라이브',
-      'zh_Hans': '',
+      'zh_Hans': '現在',
     },
     'zzx5w0ql': {
       'en': 'Volleyball Game',
       'es': 'Partido de voleibol',
       'ko': '배구 경기',
-      'zh_Hans': '',
+      'zh_Hans': '排球比赛',
     },
     'nm73extg': {
       'en': 'Live Now',
       'es': 'Vive ahora',
       'ko': '지금 라이브',
-      'zh_Hans': '',
+      'zh_Hans': '現在',
     },
     'wji92n2m': {
       'en': 'Tennis Match',
       'es': 'Partido de tenis',
       'ko': '테니스 경기',
-      'zh_Hans': '',
+      'zh_Hans': '网球比赛',
     },
     'nr6irvd1': {
       'en': 'Live Now',
       'es': 'Vive ahora',
       'ko': '지금 라이브',
-      'zh_Hans': '',
+      'zh_Hans': '現在',
     },
     'm64lz24v': {
       'en': 'Wrestling Match',
       'es': 'Combate de lucha libre',
       'ko': '레슬링 경기',
-      'zh_Hans': '',
+      'zh_Hans': '摔跤比赛',
     },
     '8v2rhj4c': {
       'en': 'Live Now',
       'es': 'Vive ahora',
       'ko': '지금 라이브',
-      'zh_Hans': '',
+      'zh_Hans': '現在',
     },
     '6cjfh313': {
       'en': 'Gymnastics Event',
       'es': 'Evento de gimnasia',
       'ko': '체조 이벤트',
-      'zh_Hans': '',
+      'zh_Hans': '体操项目',
     },
     'h1lvwiz5': {
       'en': 'Live Now',
       'es': 'Vive ahora',
       'ko': '지금 라이브',
-      'zh_Hans': '',
+      'zh_Hans': '現在',
     },
     'pmk6xwm2': {
       'en': 'Live Sports',
       'es': 'Deportes en vivo',
       'ko': '라이브 스포츠',
-      'zh_Hans': '',
+      'zh_Hans': '直播体育赛事',
     },
   },
   // AdminAskGoogleCalendar
   {
     'd4lcm4me': {
       'en': 'Add to Google Calendar?',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': '¿Añadir a Google Calendar?',
+      'ko': 'Google 캘린더에 추가하시겠습니까?',
+      'zh_Hans': '添加到 Google 日历？',
     },
     '8vhya2wj': {
       'en':
           'Would you like us to add the your match schedule to your Google Calendar?',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es':
+          '¿Quieres que añadamos el calendario de tus partidos a tu Google Calendar?',
+      'ko': '귀하의 경기 일정을 Google 캘린더에 추가하시겠습니까?',
+      'zh_Hans': '您希望我们将您的比赛日程添加到您的 Google 日历中吗？',
     },
     'vti47427': {
       'en': 'Yes',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Sí',
+      'ko': '예',
+      'zh_Hans': '是的',
     },
     'i3rgr4ot': {
       'en': 'No',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'No',
+      'ko': '아니요',
+      'zh_Hans': '不',
     },
   },
   // LivestreamLists
   {
     'a4nuqs31': {
       'en': 'Available Lists of Streams below. ',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Listas de transmisiones disponibles a continuación.',
+      'ko': '사용 가능한 스트림 목록은 아래와 같습니다.',
+      'zh_Hans': '下面是可用的流列表。',
     },
     'inlifpwj': {
       'en': 'Streams',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Arroyos',
+      'ko': '스트림',
+      'zh_Hans': '流',
     },
     'njepmhkn': {
       'en': 'Home',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Hogar',
+      'ko': '집',
+      'zh_Hans': '家',
     },
   },
   // LiveStreamPage
   {
     'kqbtfpex': {
       'en': 'Live',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Vivir',
+      'ko': '살다',
+      'zh_Hans': '居住',
     },
     'ilco9hn9': {
       'en': 'Live',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Vivir',
+      'ko': '살다',
+      'zh_Hans': '居住',
     },
     'yjnx44c4': {
       'en': 'Start Stream',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Iniciar transmisión',
+      'ko': '스트림 시작',
+      'zh_Hans': '开始流',
     },
     'b71niuha': {
       'en': 'Live Streaming',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Transmisión en vivo',
+      'ko': '라이브 스트리밍',
+      'zh_Hans': '直播',
     },
     'jccio4zn': {
       'en': 'Home',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Hogar',
+      'ko': '집',
+      'zh_Hans': '家',
     },
   },
   // LiveStreamViewer
   {
     'chzd2hb7': {
       'en': 'Archived Videos',
+      'es': 'Videos archivados',
+      'ko': '보관된 비디오',
+      'zh_Hans': '存档视频',
+    },
+    '836hpx24': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'ko': '집',
+      'zh_Hans': '家',
+    },
+  },
+  // LoginSuccessful
+  {
+    'zfrs31zp': {
+      'en': 'Login Successful!',
+      'es': '¡Inicio de sesión exitoso!',
+      'ko': '로그인 성공!',
+      'zh_Hans': '登录成功！',
+    },
+    'w8zyjxso': {
+      'en':
+          'Welcome back to your account. You\'re now ready to explore and enjoy all the features.',
+      'es':
+          'Bienvenido nuevamente a tu cuenta. Ya estás listo para explorar y disfrutar de todas las funciones.',
+      'ko': '계정에 다시 오신 것을 환영합니다. 이제 모든 기능을 탐색하고 즐길 준비가 되었습니다.',
+      'zh_Hans': '欢迎返回您的帐户。您现在可以探索并享受所有功能。',
+    },
+    'qxi2j5pn': {
+      'en': 'What would you like to do next?',
+      'es': '¿Qué te gustaría hacer a continuación?',
+      'ko': '다음에 무엇을 하고 싶으신가요?',
+      'zh_Hans': '您接下来想做什么？',
+    },
+    'doyr15cn': {
+      'en': 'Go to Home',
+      'es': 'Ir a Inicio',
+      'ko': '홈으로 이동',
+      'zh_Hans': '转至主页',
+    },
+    'i1k8rgdj': {
+      'en': 'View Profile',
+      'es': 'Ver perfil',
+      'ko': '프로필보기',
+      'zh_Hans': '查看个人资料',
+    },
+    'y54rlgkf': {
+      'en': 'Browse FL',
+      'es': 'Explorar FL',
+      'ko': 'FL 탐색',
+      'zh_Hans': '浏览 FL',
+    },
+  },
+  // RosterDetail
+  {
+    'hra78my9': {
+      'en': 'Our Players',
       'es': '',
       'ko': '',
       'zh_Hans': '',
     },
-    '836hpx24': {
-      'en': 'Home',
+    'ej5tuwo4': {
+      'en': 'Mike Conley JR.',
       'es': '',
       'ko': '',
       'zh_Hans': '',
+    },
+    'qx2ab9ex': {
+      'en': '6\' 3\" Point Guard',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '39vn64c5': {
+      'en': 'Bio',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'spuffcw8': {
+      'en':
+          'John Doe is a talented, versatile shooting guard standing at 6\'5\", known for his exceptional ball-handling skills and ability to score from beyond the arc. Defensively, his quick reflexes and teamwork make him an essential player on the court, contributing to his team\'s overall success.',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '4vo1va4v': {
+      'en': 'Season Stat Highlights',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'l3uhbo6n': {
+      'en': '16.2',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'se6d2drw': {
+      'en': 'PPG',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'ul125qq2': {
+      'en': '3.0',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'wrtco26w': {
+      'en': 'REB',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '806id2e6': {
+      'en': '5.3',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'wefh8z5b': {
+      'en': 'AST',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'n5oafkpt': {
+      'en': 'Jordan Clarkson',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'srhlz2lq': {
+      'en': '6\' 4\" Point Guard',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'drqcyy33': {
+      'en': 'Bio',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'yenkxlks': {
+      'en':
+          'John Doe is a talented, versatile shooting guard standing at 6\'5\", known for his exceptional ball-handling skills and ability to score from beyond the arc. Defensively, his quick reflexes and teamwork make him an essential player on the court, contributing to his team\'s overall success.',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '25dk9bt1': {
+      'en': 'Season Stat Highlights',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'kxze1tqu': {
+      'en': '16.0',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'hj0abqiu': {
+      'en': 'PPG',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'pdu8b3mj': {
+      'en': '3.5',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'e4vlg1xq': {
+      'en': 'REB',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'buk0sn8o': {
+      'en': '2.5',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '1t553jkd': {
+      'en': 'AST',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'idw7mo2h': {
+      'en': 'Rudy Gay',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '6ka6ot9f': {
+      'en': '6\' 9\" Small Forward',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '0un4eqv6': {
+      'en': 'Bio',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '0wqn08oe': {
+      'en':
+          'John Doe is a talented, versatile shooting guard standing at 6\'5\", known for his exceptional ball-handling skills and ability to score from beyond the arc. Defensively, his quick reflexes and teamwork make him an essential player on the court, contributing to his team\'s overall success.',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '1jwahq01': {
+      'en': 'Season Stat Highlights',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'xqspbkio': {
+      'en': '8.3',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '4w65f3ia': {
+      'en': 'PPG',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'i7844pjb': {
+      'en': '5.4',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '0ljqv45n': {
+      'en': 'REB',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '5ulcmvy7': {
+      'en': '2.5',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '6y8zfrbp': {
+      'en': 'AST',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '1wfzf0af': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'ko': '집',
+      'zh_Hans': '家',
     },
   },
   // LatestNews
@@ -3673,7 +3947,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Nice outdoor courts, solid concrete and good hoops for the neighborhood.',
       'es':
           'Bonitas canchas al aire libre, concreto solido y buenos aros para el barrio.',
-      'ko': '좋은 야외 코트, 견고한 콘크리트, 그리고 이 지역에 적합한 좋은 농구장.',
+      'ko': '좋은 야외 코트, 견고한 콘크리트, 그리고 주변 지역에 좋은 농구장이 있습니다.',
       'zh_Hans': '漂亮的室外球场、坚固的混凝土和适合社区的优质篮球架。',
     },
     'ska2xdwz': {
@@ -3693,7 +3967,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     't5cw4b6y': {
       'en': 'AOF Media',
-      'es': 'Medios de comunicación de la AOF',
+      'es': 'Medios de comunicación de AOF',
       'ko': 'AOF 미디어',
       'zh_Hans': 'AOF 媒体',
     },
@@ -3715,7 +3989,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'j5feylo7': {
       'en': 'What a great product!',
       'es': '¡Que gran producto!',
-      'ko': '정말 좋은 제품이네요!',
+      'ko': '정말 좋은 제품이에요!',
       'zh_Hans': '多棒的产品啊！',
     },
     '5mrgviyh': {
@@ -3818,7 +4092,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Loomis Chaffee School',
       'es': 'Escuela Loomis Chaffee',
       'ko': '루미스 채피 스쿨',
-      'zh_Hans': '卢米斯查菲学校',
+      'zh_Hans': '洛米斯查菲学校',
     },
     'ry87b9g4': {
       'en': 'Miss Porter\'s School',
@@ -3846,28 +4120,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'es': 'Botón',
       'ko': '단추',
       'zh_Hans': '按钮',
-    },
-    'aljdo32m': {
-      'en': 'Andrew Daniels',
-      'es': 'Andrés Daniels',
-      'ko': '앤드류 다니엘스',
-      'zh_Hans': '安德鲁·丹尼尔斯',
-    },
-    'voczz4q1': {
-      'en': '22m',
-      'es': '22 m',
-      'ko': '22분',
-      'zh_Hans': '22 分钟',
-    },
-    'p2wycsqu': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
-      'es':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,',
-      'ko':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut Labore et dolore magna aliqua. Ut enim ad minim veniam,',
-      'zh_Hans':
-          'Lorem ipsum dolor sat amet，consectetur adipiscing elit，sed do eiusmod tempor incididunt ut Labore et dolore magna aliqua。 Ut enim ad minim veniam，',
     },
     'u9jtwfp2': {
       'en': '2 replies',
@@ -4148,7 +4400,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '3vrfnmou': {
       'en': 'Ai Chat Active!',
       'es': '¡Ai Chat activo!',
-      'ko': 'AI 채팅 활성화!',
+      'ko': 'Ai 채팅이 활성화되었습니다!',
       'zh_Hans': '愛聊活跃！',
     },
     'nxg4u6dw': {
@@ -4327,33 +4579,66 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'flafzr7u': {
       'en': 'Create a Stream',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Crear una transmisión',
+      'ko': '스트림 만들기',
+      'zh_Hans': '创建流',
     },
     'hzppwanu': {
       'en': 'Create your streams by filling the form below.',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Crea tus streams rellenando el formulario a continuación.',
+      'ko': '아래 양식을 작성하여 스트림을 생성하세요.',
+      'zh_Hans': '通过填写下面的表格来创建您的流。',
     },
     'i9jw1mjf': {
       'en': 'Write your title here...',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Escribe tu título aquí...',
+      'ko': '여기에 제목을 입력하세요...',
+      'zh_Hans': '在这里写下你的标题...',
     },
     '7zduolxf': {
       'en': 'Enter your description here...',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Introduce tu descripción aquí...',
+      'ko': '여기에 설명을 입력하세요...',
+      'zh_Hans': '在此处输入您的描述...',
     },
     'ce2s0wyf': {
       'en': 'Create Stream',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Crear transmisión',
+      'ko': '스트림 생성',
+      'zh_Hans': '创建流',
+    },
+  },
+  // LanguageSelector
+  {
+    'ntb39lyq': {
+      'en': 'Select Language',
+      'es': 'Seleccione idioma',
+      'ko': '언어 선택',
+      'zh_Hans': '选择语言',
+    },
+    '1f0kjg0f': {
+      'en': 'English',
+      'es': 'English',
+      'ko': 'English',
+      'zh_Hans': 'English',
+    },
+    'cbnypdrl': {
+      'en': 'Español',
+      'es': 'Español',
+      'ko': 'Español',
+      'zh_Hans': 'Español',
+    },
+    'vbss7yxg': {
+      'en': '中文',
+      'es': '中文',
+      'ko': '中文',
+      'zh_Hans': '中文',
+    },
+    'qj9i6ro0': {
+      'en': '한국어',
+      'es': '한국어',
+      'ko': '한국어',
+      'zh_Hans': '한국어',
     },
   },
   // Miscellaneous
@@ -4385,9 +4670,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ukqkos00': {
       'en':
           'Would you like to get exclusive notifications from FL, such as private team notification from your coach?',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es':
+          '¿Quieres recibir notificaciones exclusivas de FL, como notificaciones privadas del equipo de tu entrenador?',
+      'ko': '코치로부터 개인 팀 알림 등 FL에서 보내는 특별 알림을 받으시겠습니까?',
+      'zh_Hans': '您想获得 FL 的独家通知吗，例如来自教练的私人团队通知？',
     },
     'kjlzxw82': {
       'en': '',

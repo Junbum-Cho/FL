@@ -143,7 +143,7 @@ class _ProfilesWidgetState extends State<ProfilesWidget>
                                                     currentUserPhoto,
                                                     width: 40.0,
                                                     height: 40.0,
-                                                    fit: BoxFit.contain,
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
                                               ),

@@ -101,14 +101,54 @@ class _NotificationSettingsWidgetState
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                child: Material(
+                  color: Colors.transparent,
+                  child: SwitchListTile.adaptive(
+                    value: _model.switchListTileValue1 ??= true,
+                    onChanged: (newValue) async {
+                      safeSetState(
+                          () => _model.switchListTileValue1 = newValue);
+                    },
+                    title: Text(
+                      FFLocalizations.of(context).getText(
+                        's1x8b7ch' /* Push Notifications */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyLarge.override(
+                            fontFamily: 'Readex Pro',
+                            letterSpacing: 0.0,
+                            lineHeight: 2.0,
+                          ),
+                    ),
+                    subtitle: Text(
+                      FFLocalizations.of(context).getText(
+                        'v8ajxbh3' /* Receive Push notifications fro... */,
+                      ),
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Readex Pro',
+                            color: const Color(0xFF8B97A2),
+                            letterSpacing: 0.0,
+                          ),
+                    ),
+                    tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                    activeColor: FlutterFlowTheme.of(context).primary,
+                    activeTrackColor: FlutterFlowTheme.of(context).accent1,
+                    dense: false,
+                    controlAffinity: ListTileControlAffinity.trailing,
+                    contentPadding:
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
+                  ),
+                ),
+              ),
+              Material(
+                color: Colors.transparent,
                 child: SwitchListTile.adaptive(
-                  value: _model.switchListTileValue1 ??= true,
+                  value: _model.switchListTileValue2 ??= true,
                   onChanged: (newValue) async {
-                    safeSetState(() => _model.switchListTileValue1 = newValue);
+                    safeSetState(() => _model.switchListTileValue2 = newValue);
                   },
                   title: Text(
                     FFLocalizations.of(context).getText(
-                      's1x8b7ch' /* Push Notifications */,
+                      'piljihjp' /* Match Reminders */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyLarge.override(
                           fontFamily: 'Readex Pro',
@@ -118,7 +158,7 @@ class _NotificationSettingsWidgetState
                   ),
                   subtitle: Text(
                     FFLocalizations.of(context).getText(
-                      'v8ajxbh3' /* Receive Push notifications fro... */,
+                      'jf9j2u4q' /* Receive a match reminder 1 hou... */,
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Readex Pro',
@@ -135,71 +175,41 @@ class _NotificationSettingsWidgetState
                       const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
                 ),
               ),
-              SwitchListTile.adaptive(
-                value: _model.switchListTileValue2 ??= true,
-                onChanged: (newValue) async {
-                  safeSetState(() => _model.switchListTileValue2 = newValue);
-                },
-                title: Text(
-                  FFLocalizations.of(context).getText(
-                    'piljihjp' /* Match Reminders */,
+              Material(
+                color: Colors.transparent,
+                child: SwitchListTile.adaptive(
+                  value: _model.switchListTileValue3 ??= true,
+                  onChanged: (newValue) async {
+                    safeSetState(() => _model.switchListTileValue3 = newValue);
+                  },
+                  title: Text(
+                    FFLocalizations.of(context).getText(
+                      'yd1of7uh' /* Commitment Notification */,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyLarge.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                          lineHeight: 2.0,
+                        ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyLarge.override(
-                        fontFamily: 'Readex Pro',
-                        letterSpacing: 0.0,
-                        lineHeight: 2.0,
-                      ),
-                ),
-                subtitle: Text(
-                  FFLocalizations.of(context).getText(
-                    'jf9j2u4q' /* Receive a match reminder 1 hou... */,
+                  subtitle: Text(
+                    FFLocalizations.of(context).getText(
+                      'pzfzi8hv' /* Recieve notifications relevant... */,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Readex Pro',
+                          color: const Color(0xFF8B97A2),
+                          letterSpacing: 0.0,
+                        ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Readex Pro',
-                        color: const Color(0xFF8B97A2),
-                        letterSpacing: 0.0,
-                      ),
+                  tileColor: FlutterFlowTheme.of(context).secondaryBackground,
+                  activeColor: FlutterFlowTheme.of(context).primary,
+                  activeTrackColor: FlutterFlowTheme.of(context).accent1,
+                  dense: false,
+                  controlAffinity: ListTileControlAffinity.trailing,
+                  contentPadding:
+                      const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
                 ),
-                tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-                activeColor: FlutterFlowTheme.of(context).primary,
-                activeTrackColor: FlutterFlowTheme.of(context).accent1,
-                dense: false,
-                controlAffinity: ListTileControlAffinity.trailing,
-                contentPadding:
-                    const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
-              ),
-              SwitchListTile.adaptive(
-                value: _model.switchListTileValue3 ??= true,
-                onChanged: (newValue) async {
-                  safeSetState(() => _model.switchListTileValue3 = newValue);
-                },
-                title: Text(
-                  FFLocalizations.of(context).getText(
-                    'yd1of7uh' /* Commitment Notification */,
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyLarge.override(
-                        fontFamily: 'Readex Pro',
-                        letterSpacing: 0.0,
-                        lineHeight: 2.0,
-                      ),
-                ),
-                subtitle: Text(
-                  FFLocalizations.of(context).getText(
-                    'pzfzi8hv' /* Recieve notifications relevant... */,
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Readex Pro',
-                        color: const Color(0xFF8B97A2),
-                        letterSpacing: 0.0,
-                      ),
-                ),
-                tileColor: FlutterFlowTheme.of(context).secondaryBackground,
-                activeColor: FlutterFlowTheme.of(context).primary,
-                activeTrackColor: FlutterFlowTheme.of(context).accent1,
-                dense: false,
-                controlAffinity: ListTileControlAffinity.trailing,
-                contentPadding:
-                    const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 12.0),
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),

@@ -400,26 +400,38 @@ class _NotificationCreateWidgetState extends State<NotificationCreateWidget>
                                               safeSetState(() {
                                                 _model.textController1?.text =
                                                     'Notice: Match TIme Update for players: TIME_VALUE (Set your time here)';
-                                                _model.textController1
-                                                        ?.selection =
-                                                    TextSelection.collapsed(
-                                                        offset: _model
-                                                            .textController1!
-                                                            .text
-                                                            .length);
+                                                _model.textFieldFocusNode1
+                                                    ?.requestFocus();
+                                                WidgetsBinding.instance
+                                                    .addPostFrameCallback((_) {
+                                                  _model.textController1
+                                                          ?.selection =
+                                                      TextSelection.collapsed(
+                                                    offset: _model
+                                                        .textController1!
+                                                        .text
+                                                        .length,
+                                                  );
+                                                });
                                               });
                                               logFirebaseEvent(
                                                   'ChoiceChips_set_form_field');
                                               safeSetState(() {
                                                 _model.textController2?.text =
                                                     'Hello all, I am updating the match time for DATE_VALUE to TIME_VALUE. Please come accordingly. Thanks! ';
-                                                _model.textController2
-                                                        ?.selection =
-                                                    TextSelection.collapsed(
-                                                        offset: _model
-                                                            .textController2!
-                                                            .text
-                                                            .length);
+                                                _model.textFieldFocusNode2
+                                                    ?.requestFocus();
+                                                WidgetsBinding.instance
+                                                    .addPostFrameCallback((_) {
+                                                  _model.textController2
+                                                          ?.selection =
+                                                      TextSelection.collapsed(
+                                                    offset: _model
+                                                        .textController2!
+                                                        .text
+                                                        .length,
+                                                  );
+                                                });
                                               });
                                             }
                                           } else if (_model.choiceChipsValue ==
@@ -435,26 +447,38 @@ class _NotificationCreateWidgetState extends State<NotificationCreateWidget>
                                               safeSetState(() {
                                                 _model.textController1?.text =
                                                     'Notice: Practice time update for players: TIME_VALUE (Set your time here)';
-                                                _model.textController1
-                                                        ?.selection =
-                                                    TextSelection.collapsed(
-                                                        offset: _model
-                                                            .textController1!
-                                                            .text
-                                                            .length);
+                                                _model.textFieldFocusNode1
+                                                    ?.requestFocus();
+                                                WidgetsBinding.instance
+                                                    .addPostFrameCallback((_) {
+                                                  _model.textController1
+                                                          ?.selection =
+                                                      TextSelection.collapsed(
+                                                    offset: _model
+                                                        .textController1!
+                                                        .text
+                                                        .length,
+                                                  );
+                                                });
                                               });
                                               logFirebaseEvent(
                                                   'ChoiceChips_set_form_field');
                                               safeSetState(() {
                                                 _model.textController2?.text =
                                                     'Hello all, I am updating the practice time for DATE_VALUE to TIME_VALUE. Please come accordingly. Thanks! ';
-                                                _model.textController2
-                                                        ?.selection =
-                                                    TextSelection.collapsed(
-                                                        offset: _model
-                                                            .textController2!
-                                                            .text
-                                                            .length);
+                                                _model.textFieldFocusNode2
+                                                    ?.requestFocus();
+                                                WidgetsBinding.instance
+                                                    .addPostFrameCallback((_) {
+                                                  _model.textController2
+                                                          ?.selection =
+                                                      TextSelection.collapsed(
+                                                    offset: _model
+                                                        .textController2!
+                                                        .text
+                                                        .length,
+                                                  );
+                                                });
                                               });
                                             }
                                           } else if (_model.choiceChipsValue ==

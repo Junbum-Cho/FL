@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'article_lists_widget.dart' show ArticleListsWidget;
@@ -10,6 +11,7 @@ class ArticleListsModel extends FlutterFlowModel<ArticleListsWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  List<ArticlesRecord> simpleSearchResults = [];
   // State field(s) for ChoiceChips widget.
   FormFieldController<List<String>>? choiceChipsValueController;
   List<String>? get choiceChipsValues => choiceChipsValueController?.value;

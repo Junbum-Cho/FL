@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/components/news_block_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/latest_components/latest_news/latest_news_widget.dart';
@@ -11,6 +12,10 @@ class LatestModel extends FlutterFlowModel<LatestWidget> {
   ///  State fields for stateful widgets in this page.
 
   TutorialCoachMark? latestPageWalkThroughController;
+  // Stores action output result for [Backend Call - API (Veracross Token Introspect)] action in Latest widget.
+  ApiCallResponse? accessTokenValidity;
+  // Stores action output result for [Backend Call - API (Veracross Client Credentials Access Token)] action in Latest widget.
+  ApiCallResponse? newAccessToken;
   // Model for LatestNews component.
   late LatestNewsModel latestNewsModel;
   // Model for NewsBlock component.

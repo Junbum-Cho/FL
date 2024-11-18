@@ -13,7 +13,7 @@ class AdminTeamPlayerListWidget extends StatefulWidget {
     required this.playerName,
     required this.playerEmail,
     required this.playerProfileImage,
-    required this.playerDocRef,
+    this.playerDocRef,
     required this.optionSelected,
   });
 

@@ -101,24 +101,6 @@
       ]
     },
     {
-      "collectionGroup": "User",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "userSchool",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "studentTeam",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "display_name",
-          "order": "DESCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "activity",
       "queryScope": "COLLECTION",
       "fields": [

@@ -1,6 +1,5 @@
 import '/admin_components/admin_match_score_update/admin_match_score_update_widget.dart';
 import '/backend/backend.dart';
-import '/backend/schema/enums/enums.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -275,7 +274,6 @@ class _AdminUpdateScoreWidgetState extends State<AdminUpdateScoreWidget> {
                                   }(),
                                   'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/v9nd0gcule8i/AOF_Logo.png',
                                 ),
-                                isUpdated: IsScoreUpdated.isUpdated,
                               ),
                             );
                           },

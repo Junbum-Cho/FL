@@ -1,11 +1,12 @@
 import '/admin_components/admin_team_player_list/admin_team_player_list_widget.dart';
 import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 import 'admine_team_player_list_model.dart';
 export 'admine_team_player_list_model.dart';
 
@@ -42,6 +43,8 @@ class _AdmineTeamPlayerListWidgetState
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Title(
         title: 'AdmineTeamPlayerList',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
@@ -188,63 +191,128 @@ class _AdmineTeamPlayerListWidgetState
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 0.0),
-                      child: AuthUserStreamWidget(
-                        builder: (context) => StreamBuilder<List<UserRecord>>(
-                          stream: queryUserRecord(
-                            queryBuilder: (userRecord) => userRecord
-                                .where(
-                                  'userSchool',
-                                  isEqualTo: valueOrDefault(
-                                      currentUserDocument?.userSchool, ''),
-                                )
-                                .where(
-                                  'studentTeam',
-                                  isEqualTo: valueOrDefault(
-                                      currentUserDocument?.facultyTeam, ''),
-                                )
-                                .orderBy('display_name', descending: true),
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitThreeBounce(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 50.0,
-                                  ),
-                                ),
-                              );
-                            }
-                            List<UserRecord> listViewUserRecordList = snapshot
-                                .data!
-                                .where((u) => u.uid != currentUserUid)
-                                .toList();
-
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: listViewUserRecordList.length,
-                              itemBuilder: (context, listViewIndex) {
-                                final listViewUserRecord =
-                                    listViewUserRecordList[listViewIndex];
-                                return AdminTeamPlayerListWidget(
-                                  key: Key(
-                                      'Keyvmw_${listViewIndex}_of_${listViewUserRecordList.length}'),
-                                  playerName: listViewUserRecord.displayName,
-                                  playerEmail: listViewUserRecord.email,
-                                  playerProfileImage:
-                                      listViewUserRecord.photoUrl,
-                                  playerDocRef: listViewUserRecord.reference,
-                                  optionSelected: false,
-                                );
-                              },
-                            );
-                          },
+                      child: FutureBuilder<ApiCallResponse>(
+                        future: VeracrossAPIRequestsGroup
+                            .veracrossListAthleticRostersCall
+                            .call(
+                          serverAccessToken: FFAppState().serverAccessToken,
+                          internalClassId: '1125',
                         ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: SpinKitThreeBounce(
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  size: 50.0,
+                                ),
+                              ),
+                            );
+                          }
+                          final listViewVeracrossListAthleticRostersResponse =
+                              snapshot.data!;
+
+                          return Builder(
+                            builder: (context) {
+                              final apiItems = VeracrossAPIRequestsGroup
+                                      .veracrossListAthleticRostersCall
+                                      .studentFirstName(
+                                        listViewVeracrossListAthleticRostersResponse
+                                            .jsonBody,
+                                      )
+                                      ?.toList() ??
+                                  [];
+
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: apiItems.length,
+                                itemBuilder: (context, apiItemsIndex) {
+                                  final apiItemsItem = apiItems[apiItemsIndex];
+                                  return FutureBuilder<ApiCallResponse>(
+                                    future: VeracrossAPIRequestsGroup
+                                        .veracrossReadAStudentCall
+                                        .call(
+                                      serverAccessToken:
+                                          FFAppState().serverAccessToken,
+                                      id: VeracrossAPIRequestsGroup
+                                          .veracrossListAthleticRostersCall
+                                          .personID(
+                                            listViewVeracrossListAthleticRostersResponse
+                                                .jsonBody,
+                                          )
+                                          ?.first
+                                          .toString(),
+                                      studentId: VeracrossAPIRequestsGroup
+                                          .veracrossListAthleticRostersCall
+                                          .personID(
+                                            listViewVeracrossListAthleticRostersResponse
+                                                .jsonBody,
+                                          )
+                                          ?.first
+                                          .toString(),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: SpinKitThreeBounce(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                              size: 50.0,
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      final adminTeamPlayerListVeracrossReadAStudentResponse =
+                                          snapshot.data!;
+
+                                      return AdminTeamPlayerListWidget(
+                                        key: Key(
+                                            'Keyvmw_${apiItemsIndex}_of_${apiItems.length}'),
+                                        playerName: '${valueOrDefault<String>(
+                                          VeracrossAPIRequestsGroup
+                                              .veracrossListAthleticRostersCall
+                                              .studentFirstName(
+                                            listViewVeracrossListAthleticRostersResponse
+                                                .jsonBody,
+                                          )?[apiItemsIndex],
+                                          'Unknown',
+                                        )} ${valueOrDefault<String>(
+                                          VeracrossAPIRequestsGroup
+                                              .veracrossListAthleticRostersCall
+                                              .studentSecondName(
+                                            listViewVeracrossListAthleticRostersResponse
+                                                .jsonBody,
+                                          )?[apiItemsIndex],
+                                          'User',
+                                        )}',
+                                        playerEmail: VeracrossAPIRequestsGroup
+                                            .veracrossReadAStudentCall
+                                            .studentEmail(
+                                          adminTeamPlayerListVeracrossReadAStudentResponse
+                                              .jsonBody,
+                                        )!,
+                                        playerProfileImage:
+                                            'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/f8j5us8qjw43/Veracross_Logo.jpg',
+                                        playerDocRef: currentUserReference,
+                                        optionSelected: false,
+                                      );
+                                    },
+                                  );
+                                },
+                              );
+                            },
+                          );
+                        },
                       ),
                     ),
                   ],

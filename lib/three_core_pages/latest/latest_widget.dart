@@ -1,6 +1,8 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/news_block_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -15,6 +17,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -33,10 +36,13 @@ class LatestWidget extends StatefulWidget {
   State<LatestWidget> createState() => _LatestWidgetState();
 }
 
-class _LatestWidgetState extends State<LatestWidget> {
+class _LatestWidgetState extends State<LatestWidget>
+    with TickerProviderStateMixin {
   late LatestModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -47,6 +53,8 @@ class _LatestWidgetState extends State<LatestWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('LATEST_PAGE_Latest_ON_INIT_STATE');
+      logFirebaseEvent('Latest_custom_action');
+      await actions.lockPhoneOrientation();
       logFirebaseEvent('Latest_update_app_state');
       FFAppState().userRole = valueOrDefault(currentUserDocument?.isFaculty, 0);
       FFAppState().facultyTeam =
@@ -58,8 +66,49 @@ class _LatestWidgetState extends State<LatestWidget> {
       FFAppState().gmailVerified =
           valueOrDefault<bool>(currentUserDocument?.gmailVerified, false);
       FFAppState().update(() {});
-      logFirebaseEvent('Latest_custom_action');
-      await actions.lockPhoneOrientation();
+      logFirebaseEvent('Latest_backend_call');
+      _model.accessTokenValidity =
+          await VeracrossAuthenticationGroup.veracrossTokenIntrospectCall.call(
+        token: FFAppState().serverAccessToken,
+      );
+
+      if ((_model.accessTokenValidity?.bodyText ?? '') ==
+          '{\"active\":false}') {
+        logFirebaseEvent('Latest_backend_call');
+        _model.newAccessToken = await VeracrossAuthenticationGroup
+            .veracrossClientCredentialsAccessTokenCall
+            .call();
+
+        if (VeracrossAuthenticationGroup
+                .veracrossClientCredentialsAccessTokenCall
+                .accessToken(
+              (_model.newAccessToken?.jsonBody ?? ''),
+            ) !=
+            'true') {
+          logFirebaseEvent('Latest_update_app_state');
+          FFAppState().serverAccessToken = VeracrossAuthenticationGroup
+              .veracrossClientCredentialsAccessTokenCall
+              .accessToken(
+            (_model.newAccessToken?.jsonBody ?? ''),
+          )!;
+          safeSetState(() {});
+        }
+      }
+    });
+
+    animationsMap.addAll({
+      'latestArticles2OnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeIn,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -392,6 +441,7 @@ class _LatestWidgetState extends State<LatestWidget> {
                                       0.0, 10.0, 0.0, 0.0),
                                   child: ListView(
                                     padding: EdgeInsets.zero,
+                                    primary: false,
                                     shrinkWrap: true,
                                     scrollDirection: Axis.vertical,
                                     children: [
@@ -737,12 +787,16 @@ class _LatestWidgetState extends State<LatestWidget> {
                                                         columnAllArticlesRecord
                                                             .content3,
                                                   ),
-                                                ).addWalkthrough(
-                                                  containerFj56lgyk,
-                                                  _model
-                                                      .latestPageWalkThroughController,
-                                                  listIndex: columnIndex,
-                                                );
+                                                )
+                                                    .addWalkthrough(
+                                                      containerFj56lgyk,
+                                                      _model
+                                                          .latestPageWalkThroughController,
+                                                      listIndex: columnIndex,
+                                                    )
+                                                    .animateOnPageLoad(
+                                                        animationsMap[
+                                                            'latestArticles2OnPageLoadAnimation']!);
                                               }),
                                             );
                                           },

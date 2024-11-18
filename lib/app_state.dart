@@ -38,6 +38,11 @@ class FFAppState extends ChangeNotifier {
           await secureStorage.getBool('ff_isWalkThroughCompleted') ??
               _isWalkThroughCompleted;
     });
+    await _safeInitAsync(() async {
+      _serverAccessToken =
+          await secureStorage.getString('ff_serverAccessToken') ??
+              _serverAccessToken;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -106,6 +111,17 @@ class FFAppState extends ChangeNotifier {
   String get userAccessToken => _userAccessToken;
   set userAccessToken(String value) {
     _userAccessToken = value;
+  }
+
+  String _serverAccessToken = 'default';
+  String get serverAccessToken => _serverAccessToken;
+  set serverAccessToken(String value) {
+    _serverAccessToken = value;
+    secureStorage.setString('ff_serverAccessToken', value);
+  }
+
+  void deleteServerAccessToken() {
+    secureStorage.delete(key: 'ff_serverAccessToken');
   }
 }
 

@@ -1,4 +1,3 @@
-import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'admin_add_players_widget.dart' show AdminAddPlayersWidget;
 import 'package:flutter/material.dart';
@@ -10,7 +9,7 @@ class AdminAddPlayersModel extends FlutterFlowModel<AdminAddPlayersWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  List<UserRecord> simpleSearchResults = [];
+  List<String> simpleSearchResults = [];
 
   @override
   void initState(BuildContext context) {}

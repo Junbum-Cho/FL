@@ -71,3 +71,6 @@ export '/live_streaming/live_stream_page/live_stream_page_widget.dart'
     show LiveStreamPageWidget;
 export '/live_streaming/live_stream_viewer/live_stream_viewer_widget.dart'
     show LiveStreamViewerWidget;
+export '/auth_pages/login_successful/login_successful_widget.dart'
+    show LoginSuccessfulWidget;
+export '/roster_detail/roster_detail_widget.dart' show RosterDetailWidget;

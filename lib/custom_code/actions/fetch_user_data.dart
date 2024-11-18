@@ -12,18 +12,23 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-Future<String> fetchUserInfo(String accessToken) async {
+Future<void> fetchUserData(String accessToken) async {
+  final String schoolRoute =
+      'api-sandbox'; // Replace with your actual school route
+  final String apiUrl = 'https://api.veracross.com/$schoolRoute/v3/persons';
+
   final response = await http.get(
-    Uri.parse('https://api.veracross.com/api-sandbox/v3/userinfo'),
+    Uri.parse(apiUrl),
     headers: {
       'Authorization': 'Bearer $accessToken',
     },
   );
 
   if (response.statusCode == 200) {
-    final userInfo = json.decode(response.body);
-    return userInfo['preferred_username'] ?? 'No username found';
+    final data = json.decode(response.body);
+    // Process the user data as needed
   } else {
-    throw 'Error: Failed to fetch user info: ${response.body}';
+    // Handle the error
+    print('Error fetching user data: ${response.statusCode}');
   }
 }

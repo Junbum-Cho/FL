@@ -112,6 +112,9 @@ class _AdminAddPlayerComp2WidgetState extends State<AdminAddPlayerComp2Widget> {
                               valueOrDefault<String>(
                                 widget.userEmail,
                                 'NA',
+                              ).maybeHandleOverflow(
+                                maxChars: 30,
+                                replacement: '…',
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .labelMedium

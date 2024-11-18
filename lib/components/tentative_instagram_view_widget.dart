@@ -2,13 +2,31 @@ import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'tentative_instagram_view_model.dart';
 export 'tentative_instagram_view_model.dart';
 
 class TentativeInstagramViewWidget extends StatefulWidget {
-  const TentativeInstagramViewWidget({super.key});
+  const TentativeInstagramViewWidget({
+    super.key,
+    String? accountName,
+    String? accountImage,
+    String? postContent,
+    String? postImage,
+    String? timestamp,
+  })  : accountName = accountName ?? 'Unknown Account',
+        accountImage = accountImage ?? 'image',
+        postContent = postContent ?? 'content',
+        postImage = postImage ?? 'image',
+        timestamp = timestamp ?? 'time';
+
+  final String accountName;
+  final String accountImage;
+  final String postContent;
+  final String postImage;
+  final String timestamp;
 
   @override
   State<TentativeInstagramViewWidget> createState() =>
@@ -78,8 +96,10 @@ class _TentativeInstagramViewWidgetState
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
-                              child: Image.asset(
-                                'assets/images/AOF_Logo.png',
+                              child: CachedNetworkImage(
+                                fadeInDuration: const Duration(milliseconds: 500),
+                                fadeOutDuration: const Duration(milliseconds: 500),
+                                imageUrl: widget.accountImage,
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -156,8 +176,9 @@ class _TentativeInstagramViewWidgetState
                                         CrossAxisAlignment.center,
                                     children: [
                                       Text(
-                                        FFLocalizations.of(context).getText(
-                                          'aljdo32m' /* Andrew Daniels */,
+                                        valueOrDefault<String>(
+                                          widget.accountName,
+                                          'accountName',
                                         ),
                                         style: FlutterFlowTheme.of(context)
                                             .bodyLarge
@@ -172,8 +193,9 @@ class _TentativeInstagramViewWidgetState
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 2.0, 0.0),
                                         child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'voczz4q1' /* 22m */,
+                                          valueOrDefault<String>(
+                                            widget.timestamp,
+                                            'timestamp',
                                           ),
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
@@ -194,8 +216,9 @@ class _TentativeInstagramViewWidgetState
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 6.0, 0.0, 2.0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'p2wycsqu' /* Lorem ipsum dolor sit amet, co... */,
+                                      valueOrDefault<String>(
+                                        widget.postContent,
+                                        'Content',
                                       ),
                                       textAlign: TextAlign.start,
                                       maxLines: 6,
@@ -233,25 +256,33 @@ class _TentativeInstagramViewWidgetState
                                           PageTransition(
                                             type: PageTransitionType.fade,
                                             child: FlutterFlowExpandedImageView(
-                                              image: Image.asset(
-                                                'assets/images/Loomis_Chaffee_School_Sports_Image.png',
+                                              image: CachedNetworkImage(
+                                                fadeInDuration:
+                                                    const Duration(milliseconds: 500),
+                                                fadeOutDuration:
+                                                    const Duration(milliseconds: 500),
+                                                imageUrl: widget.postImage,
                                                 fit: BoxFit.contain,
                                               ),
                                               allowRotation: false,
-                                              tag: 'imageTag',
+                                              tag: widget.postImage,
                                               useHeroAnimation: true,
                                             ),
                                           ),
                                         );
                                       },
                                       child: Hero(
-                                        tag: 'imageTag',
+                                        tag: widget.postImage,
                                         transitionOnUserGestures: true,
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
-                                          child: Image.asset(
-                                            'assets/images/Loomis_Chaffee_School_Sports_Image.png',
+                                          child: CachedNetworkImage(
+                                            fadeInDuration:
+                                                const Duration(milliseconds: 500),
+                                            fadeOutDuration:
+                                                const Duration(milliseconds: 500),
+                                            imageUrl: widget.postImage,
                                             fit: BoxFit.cover,
                                           ),
                                         ),
