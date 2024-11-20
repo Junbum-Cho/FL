@@ -366,7 +366,7 @@ class _MatchOverviewWidgetState extends State<MatchOverviewWidget>
                                                     } else if (widget
                                                             .schoolOneName ==
                                                         'Loomis Chaffee School') {
-                                                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/110v01jxmqhg/Loomis_Logo.png';
+                                                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/l6pm5xxrb20z/Loomis_Chaffee_School_Logo_white_colored.png';
                                                     } else if (widget
                                                             .schoolOneName ==
                                                         'Miss Porter\'s School') {
@@ -382,7 +382,7 @@ class _MatchOverviewWidgetState extends State<MatchOverviewWidget>
                                                     } else if (widget
                                                             .schoolOneName ==
                                                         'Westminster School') {
-                                                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/k4l7kpj6z9u4/Westminster_School_logo.png';
+                                                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/rutpoxkei9f7/Westerminter_School_Logo_Background_Removed.png';
                                                     } else {
                                                       return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/v9nd0gcule8i/AOF_Logo.png';
                                                     }
@@ -810,7 +810,7 @@ class _MatchOverviewWidgetState extends State<MatchOverviewWidget>
                                                     } else if (widget
                                                             .schoolNameTwo ==
                                                         'Loomis Chaffee School') {
-                                                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/110v01jxmqhg/Loomis_Logo.png';
+                                                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/l6pm5xxrb20z/Loomis_Chaffee_School_Logo_white_colored.png';
                                                     } else if (widget
                                                             .schoolNameTwo ==
                                                         'Miss Porter\'s School') {
@@ -826,7 +826,7 @@ class _MatchOverviewWidgetState extends State<MatchOverviewWidget>
                                                     } else if (widget
                                                             .schoolNameTwo ==
                                                         'Westminster School') {
-                                                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/k4l7kpj6z9u4/Westminster_School_logo.png';
+                                                      return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/rutpoxkei9f7/Westerminter_School_Logo_Background_Removed.png';
                                                     } else {
                                                       return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/v9nd0gcule8i/AOF_Logo.png';
                                                     }

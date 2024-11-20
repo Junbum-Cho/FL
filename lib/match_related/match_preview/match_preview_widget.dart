@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/season_overview_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
@@ -38,6 +39,7 @@ class MatchPreviewWidget extends StatefulWidget {
     required this.commentNumber,
     required this.docRef,
     required this.dateForComment,
+    required this.teamId,
   });
 
   final String? schoolOne;
@@ -51,6 +53,7 @@ class MatchPreviewWidget extends StatefulWidget {
   final int? commentNumber;
   final String? docRef;
   final String? dateForComment;
+  final String? teamId;
 
   @override
   State<MatchPreviewWidget> createState() => _MatchPreviewWidgetState();
@@ -161,40 +164,67 @@ class _MatchPreviewWidgetState extends State<MatchPreviewWidget>
             appBar: AppBar(
               backgroundColor: FlutterFlowTheme.of(context).accent1,
               automaticallyImplyLeading: false,
-              leading: FlutterFlowIconButton(
-                borderColor: Colors.transparent,
-                borderRadius: 30.0,
-                borderWidth: 1.0,
-                buttonSize: 60.0,
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  color: Colors.white,
-                  size: 25.0,
-                ),
-                onPressed: () async {
-                  logFirebaseEvent('MATCH_PREVIEW_arrow_back_ios_ICN_ON_TAP');
-                  logFirebaseEvent('IconButton_navigate_back');
-                  context.pop();
-                },
-              ),
-              title: Text(
-                '${valueOrDefault<String>(
-                  _model.schoolOne,
-                  'NA',
-                )} vs ${valueOrDefault<String>(
-                  _model.schoolTwo1,
-                  'NA',
-                )}',
-                style: FlutterFlowTheme.of(context).headlineMedium.override(
-                      fontFamily: 'Outfit',
-                      color: Colors.white,
-                      fontSize: 22.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.w500,
-                    ),
-              ),
               actions: const [],
-              centerTitle: true,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      FlutterFlowIconButton(
+                        borderColor: Colors.transparent,
+                        borderRadius: 30.0,
+                        borderWidth: 1.0,
+                        buttonSize: 60.0,
+                        icon: Icon(
+                          Icons.arrow_back_ios_rounded,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          size: 25.0,
+                        ),
+                        onPressed: () async {
+                          logFirebaseEvent(
+                              'MATCH_PREVIEW_arrow_back_ios_rounded_ICN');
+                          logFirebaseEvent('IconButton_navigate_back');
+                          context.pop();
+                        },
+                      ),
+                      Text(
+                        '${valueOrDefault<String>(
+                          _model.schoolOne,
+                          'NA',
+                        )} vs ${valueOrDefault<String>(
+                          _model.schoolTwo1,
+                          'NA',
+                        )}',
+                        style: FlutterFlowTheme.of(context)
+                            .headlineMedium
+                            .override(
+                              fontFamily: 'Outfit',
+                              color: Colors.white,
+                              fontSize: 22.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.w500,
+                            ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                        child: Icon(
+                          Icons.ios_share,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          size: 24.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                centerTitle: true,
+                expandedTitleScale: 1.0,
+              ),
               elevation: 2.0,
             ),
             body: SafeArea(
@@ -376,7 +406,7 @@ class _MatchPreviewWidgetState extends State<MatchPreviewWidget>
                                                   } else if (widget
                                                           .schoolOne ==
                                                       'Loomis Chaffee School') {
-                                                    return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/110v01jxmqhg/Loomis_Logo.png';
+                                                    return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/l6pm5xxrb20z/Loomis_Chaffee_School_Logo_white_colored.png';
                                                   } else if (widget
                                                           .schoolOne ==
                                                       'Miss Porter\'s School') {
@@ -392,7 +422,7 @@ class _MatchPreviewWidgetState extends State<MatchPreviewWidget>
                                                   } else if (widget
                                                           .schoolOne ==
                                                       'Westminster School') {
-                                                    return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/k4l7kpj6z9u4/Westminster_School_logo.png';
+                                                    return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/rutpoxkei9f7/Westerminter_School_Logo_Background_Removed.png';
                                                   } else {
                                                     return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/v9nd0gcule8i/AOF_Logo.png';
                                                   }
@@ -795,7 +825,7 @@ class _MatchPreviewWidgetState extends State<MatchPreviewWidget>
                                                   } else if (widget
                                                           .schoolTwo ==
                                                       'Loomis Chaffee School') {
-                                                    return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/110v01jxmqhg/Loomis_Logo.png';
+                                                    return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/l6pm5xxrb20z/Loomis_Chaffee_School_Logo_white_colored.png';
                                                   } else if (widget
                                                           .schoolTwo ==
                                                       'Miss Porter\'s School') {
@@ -811,7 +841,7 @@ class _MatchPreviewWidgetState extends State<MatchPreviewWidget>
                                                   } else if (widget
                                                           .schoolTwo ==
                                                       'Westminster School') {
-                                                    return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/k4l7kpj6z9u4/Westminster_School_logo.png';
+                                                    return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/rutpoxkei9f7/Westerminter_School_Logo_Background_Removed.png';
                                                   } else {
                                                     return 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/v9nd0gcule8i/AOF_Logo.png';
                                                   }
@@ -1474,7 +1504,7 @@ class _MatchPreviewWidgetState extends State<MatchPreviewWidget>
                                               },
                                               text: FFLocalizations.of(context)
                                                   .getText(
-                                                'hufyekyp' /* More Articles */,
+                                                'hufyekyp' /* More Matches */,
                                               ),
                                               icon: Icon(
                                                 Icons.arrow_forward,
@@ -1546,50 +1576,330 @@ class _MatchPreviewWidgetState extends State<MatchPreviewWidget>
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            wrapWithModel(
-                                              model:
-                                                  _model.seasonOverviewModel1,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: const SeasonOverviewWidget(
-                                                num1: 3.0,
-                                                num2: 2.0,
-                                                text: 'Won',
+                                            FutureBuilder<ApiCallResponse>(
+                                              future: VeracrossAPIRequestsGroup
+                                                  .veracrossListAthleticEventsCall
+                                                  .call(
+                                                serverAccessToken: FFAppState()
+                                                    .serverAccessToken,
+                                                internalClassId: '1117',
                                               ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child: SpinKitThreeBounce(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 50.0,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                final seasonOverviewVeracrossListAthleticEventsResponse =
+                                                    snapshot.data!;
+
+                                                return wrapWithModel(
+                                                  model: _model
+                                                      .seasonOverviewModel1,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: SeasonOverviewWidget(
+                                                    num1:
+                                                        valueOrDefault<String>(
+                                                      VeracrossAPIRequestsGroup
+                                                          .veracrossListAthleticEventsCall
+                                                          .gamesWonNum(
+                                                            seasonOverviewVeracrossListAthleticEventsResponse
+                                                                .jsonBody,
+                                                          )
+                                                          ?.length
+                                                          .toString(),
+                                                      '0',
+                                                    ),
+                                                    num2:
+                                                        valueOrDefault<String>(
+                                                      (valueOrDefault<int>(
+                                                                VeracrossAPIRequestsGroup
+                                                                    .veracrossListAthleticEventsCall
+                                                                    .isWon(
+                                                                      seasonOverviewVeracrossListAthleticEventsResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.length,
+                                                                0,
+                                                              ) -
+                                                              valueOrDefault<
+                                                                  int>(
+                                                                VeracrossAPIRequestsGroup
+                                                                    .veracrossListAthleticEventsCall
+                                                                    .gamesWonNum(
+                                                                      seasonOverviewVeracrossListAthleticEventsResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.length,
+                                                                0,
+                                                              ) -
+                                                              valueOrDefault<
+                                                                  int>(
+                                                                VeracrossAPIRequestsGroup
+                                                                    .veracrossListAthleticEventsCall
+                                                                    .gamesDraw(
+                                                                      seasonOverviewVeracrossListAthleticEventsResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.length,
+                                                                0,
+                                                              ) -
+                                                              valueOrDefault<
+                                                                  int>(
+                                                                VeracrossAPIRequestsGroup
+                                                                    .veracrossListAthleticEventsCall
+                                                                    .gameUndefined(
+                                                                      seasonOverviewVeracrossListAthleticEventsResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.length,
+                                                                0,
+                                                              ) -
+                                                              valueOrDefault<
+                                                                  int>(
+                                                                VeracrossAPIRequestsGroup
+                                                                    .veracrossListAthleticEventsCall
+                                                                    .gameCancelled(
+                                                                      seasonOverviewVeracrossListAthleticEventsResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.length,
+                                                                0,
+                                                              ))
+                                                          .toString(),
+                                                      '0',
+                                                    ),
+                                                    text: 'Won',
+                                                  ),
+                                                );
+                                              },
                                             ),
-                                            wrapWithModel(
-                                              model:
-                                                  _model.seasonOverviewModel2,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: const SeasonOverviewWidget(
-                                                num1: 1.0,
-                                                num2: 1.0,
-                                                text: 'Draw',
+                                            FutureBuilder<ApiCallResponse>(
+                                              future: VeracrossAPIRequestsGroup
+                                                  .veracrossListAthleticEventsCall
+                                                  .call(
+                                                serverAccessToken: FFAppState()
+                                                    .serverAccessToken,
+                                                internalClassId: '1117',
                                               ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child: SpinKitThreeBounce(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 50.0,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                final seasonOverviewVeracrossListAthleticEventsResponse =
+                                                    snapshot.data!;
+
+                                                return wrapWithModel(
+                                                  model: _model
+                                                      .seasonOverviewModel2,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: SeasonOverviewWidget(
+                                                    num1:
+                                                        valueOrDefault<String>(
+                                                      VeracrossAPIRequestsGroup
+                                                          .veracrossListAthleticEventsCall
+                                                          .gamesDraw(
+                                                            seasonOverviewVeracrossListAthleticEventsResponse
+                                                                .jsonBody,
+                                                          )
+                                                          ?.length
+                                                          .toString(),
+                                                      '0',
+                                                    ),
+                                                    num2:
+                                                        valueOrDefault<String>(
+                                                      VeracrossAPIRequestsGroup
+                                                          .veracrossListAthleticEventsCall
+                                                          .gamesDraw(
+                                                            seasonOverviewVeracrossListAthleticEventsResponse
+                                                                .jsonBody,
+                                                          )
+                                                          ?.length
+                                                          .toString(),
+                                                      '0',
+                                                    ),
+                                                    text: 'Draw',
+                                                  ),
+                                                );
+                                              },
                                             ),
-                                            wrapWithModel(
-                                              model:
-                                                  _model.seasonOverviewModel3,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: const SeasonOverviewWidget(
-                                                num1: 2.0,
-                                                num2: 3.0,
-                                                text: 'Lost',
+                                            FutureBuilder<ApiCallResponse>(
+                                              future: VeracrossAPIRequestsGroup
+                                                  .veracrossListAthleticEventsCall
+                                                  .call(
+                                                serverAccessToken: FFAppState()
+                                                    .serverAccessToken,
+                                                internalClassId: '1117',
                                               ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child: SpinKitThreeBounce(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 50.0,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                final seasonOverviewVeracrossListAthleticEventsResponse =
+                                                    snapshot.data!;
+
+                                                return wrapWithModel(
+                                                  model: _model
+                                                      .seasonOverviewModel3,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: SeasonOverviewWidget(
+                                                    num1:
+                                                        valueOrDefault<String>(
+                                                      VeracrossAPIRequestsGroup
+                                                          .veracrossListAthleticEventsCall
+                                                          .gamesLostNum(
+                                                            seasonOverviewVeracrossListAthleticEventsResponse
+                                                                .jsonBody,
+                                                          )
+                                                          ?.length
+                                                          .toString(),
+                                                      '0',
+                                                    ),
+                                                    num2:
+                                                        valueOrDefault<String>(
+                                                      (valueOrDefault<int>(
+                                                                VeracrossAPIRequestsGroup
+                                                                    .veracrossListAthleticEventsCall
+                                                                    .isWon(
+                                                                      seasonOverviewVeracrossListAthleticEventsResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.length,
+                                                                0,
+                                                              ) -
+                                                              valueOrDefault<
+                                                                  int>(
+                                                                VeracrossAPIRequestsGroup
+                                                                    .veracrossListAthleticEventsCall
+                                                                    .gamesLostNum(
+                                                                      seasonOverviewVeracrossListAthleticEventsResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.length,
+                                                                0,
+                                                              ) -
+                                                              valueOrDefault<
+                                                                  int>(
+                                                                VeracrossAPIRequestsGroup
+                                                                    .veracrossListAthleticEventsCall
+                                                                    .gamesDraw(
+                                                                      seasonOverviewVeracrossListAthleticEventsResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.length,
+                                                                0,
+                                                              ) -
+                                                              valueOrDefault<
+                                                                  int>(
+                                                                VeracrossAPIRequestsGroup
+                                                                    .veracrossListAthleticEventsCall
+                                                                    .gameUndefined(
+                                                                      seasonOverviewVeracrossListAthleticEventsResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.length,
+                                                                0,
+                                                              ) -
+                                                              valueOrDefault<
+                                                                  int>(
+                                                                VeracrossAPIRequestsGroup
+                                                                    .veracrossListAthleticEventsCall
+                                                                    .gameCancelled(
+                                                                      seasonOverviewVeracrossListAthleticEventsResponse
+                                                                          .jsonBody,
+                                                                    )
+                                                                    ?.length,
+                                                                0,
+                                                              ))
+                                                          .toString(),
+                                                      '0',
+                                                    ),
+                                                    text: 'Lost',
+                                                  ),
+                                                );
+                                              },
                                             ),
-                                            wrapWithModel(
-                                              model:
-                                                  _model.seasonOverviewModel4,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: const SeasonOverviewWidget(
-                                                num1: 2.4,
-                                                num2: 2.0,
-                                                text:
-                                                    'Avg scores obtained per match',
+                                            FutureBuilder<ApiCallResponse>(
+                                              future: VeracrossAPIRequestsGroup
+                                                  .veracrossListAthleticEventsCall
+                                                  .call(
+                                                serverAccessToken: FFAppState()
+                                                    .serverAccessToken,
+                                                internalClassId: '1117',
                                               ),
+                                              builder: (context, snapshot) {
+                                                // Customize what your widget looks like when it's loading.
+                                                if (!snapshot.hasData) {
+                                                  return Center(
+                                                    child: SizedBox(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      child: SpinKitThreeBounce(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 50.0,
+                                                      ),
+                                                    ),
+                                                  );
+                                                }
+                                                final seasonOverviewVeracrossListAthleticEventsResponse =
+                                                    snapshot.data!;
+
+                                                return wrapWithModel(
+                                                  model: _model
+                                                      .seasonOverviewModel4,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: const SeasonOverviewWidget(
+                                                    num1: '2.4',
+                                                    num2: '2.0',
+                                                    text:
+                                                        'Avg scores obtained per match',
+                                                  ),
+                                                );
+                                              },
                                             ),
                                           ],
                                         ),

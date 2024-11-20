@@ -289,6 +289,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'sportsImage5',
               ParamType.String,
             ),
+            sportsID: params.getParam(
+              'sportsID',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(
@@ -337,6 +341,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             dateForComment: params.getParam(
               'dateForComment',
+              ParamType.String,
+            ),
+            teamId: params.getParam(
+              'teamId',
               ParamType.String,
             ),
           ),
@@ -513,7 +521,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         ),
         FFRoute(
           name: 'AdmineTeamPlayerList',
-          path: '/admineTeamPlayerList',
+          path: '/adminTeamPlayerList',
           builder: (context, params) => const AdmineTeamPlayerListWidget(),
         ),
         FFRoute(
@@ -640,7 +648,28 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'RosterDetail',
           path: '/rosterDetail',
-          builder: (context, params) => const RosterDetailWidget(),
+          builder: (context, params) => RosterDetailWidget(
+            playerName: params.getParam(
+              'playerName',
+              ParamType.String,
+            ),
+            playerPosition: params.getParam(
+              'playerPosition',
+              ParamType.String,
+            ),
+            playerGrade: params.getParam(
+              'playerGrade',
+              ParamType.int,
+            ),
+            playerJersey: params.getParam(
+              'playerJersey',
+              ParamType.int,
+            ),
+            playerNationality: params.getParam(
+              'playerNationality',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

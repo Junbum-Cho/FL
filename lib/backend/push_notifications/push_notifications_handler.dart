@@ -156,6 +156,7 @@ final parametersBuilderMap =
           'sportsImage3': getParameter<String>(data, 'sportsImage3'),
           'sportsImage4': getParameter<String>(data, 'sportsImage4'),
           'sportsImage5': getParameter<String>(data, 'sportsImage5'),
+          'sportsID': getParameter<int>(data, 'sportsID'),
         },
       ),
   'MatchPreview': (data) async => ParameterData(
@@ -171,6 +172,7 @@ final parametersBuilderMap =
           'commentNumber': getParameter<int>(data, 'commentNumber'),
           'docRef': getParameter<String>(data, 'docRef'),
           'dateForComment': getParameter<String>(data, 'dateForComment'),
+          'teamId': getParameter<String>(data, 'teamId'),
         },
       ),
   'AthleticTeams': ParameterData.none(),
@@ -261,7 +263,15 @@ final parametersBuilderMap =
         },
       ),
   'LoginSuccessful': ParameterData.none(),
-  'RosterDetail': ParameterData.none(),
+  'RosterDetail': (data) async => ParameterData(
+        allParams: {
+          'playerName': getParameter<String>(data, 'playerName'),
+          'playerPosition': getParameter<String>(data, 'playerPosition'),
+          'playerGrade': getParameter<int>(data, 'playerGrade'),
+          'playerJersey': getParameter<int>(data, 'playerJersey'),
+          'playerNationality': getParameter<String>(data, 'playerNationality'),
+        },
+      ),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

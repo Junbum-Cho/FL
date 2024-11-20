@@ -46,7 +46,7 @@ class _AdmineTeamPlayerListWidgetState
     context.watch<FFAppState>();
 
     return Title(
-        title: 'AdmineTeamPlayerList',
+        title: 'AdminTeamPlayerList',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),

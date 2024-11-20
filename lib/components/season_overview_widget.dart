@@ -12,8 +12,8 @@ class SeasonOverviewWidget extends StatefulWidget {
     required this.text,
   });
 
-  final double? num1;
-  final double? num2;
+  final String? num1;
+  final String? num2;
   final String? text;
 
   @override
@@ -64,7 +64,7 @@ class _SeasonOverviewWidgetState extends State<SeasonOverviewWidget> {
               padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
               child: Text(
                 valueOrDefault<String>(
-                  widget.num1?.toString(),
+                  widget.num1,
                   '-',
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -97,7 +97,7 @@ class _SeasonOverviewWidgetState extends State<SeasonOverviewWidget> {
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
               child: Text(
                 valueOrDefault<String>(
-                  widget.num2?.toString(),
+                  widget.num2,
                   '-',
                 ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(

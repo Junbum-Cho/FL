@@ -931,7 +931,7 @@ class _AdminUpdateScore2WidgetState extends State<AdminUpdateScore2Widget>
                           return FFButtonWidget(
                             onPressed: () async {
                               logFirebaseEvent(
-                                  'ADMIN_UPDATE_SCORE2_UPDATE_SCORE_BTN_ON_');
+                                  'ADMIN_UPDATE_SCORE2_UPDATE_SCORE__SEND_S');
                               if ((_model.textController1.text != '') &&
                                   (_model.textController2.text != '')) {
                                 logFirebaseEvent('Button_alert_dialog');
@@ -966,6 +966,8 @@ class _AdminUpdateScore2WidgetState extends State<AdminUpdateScore2Widget>
                                         ) ??
                                         false;
                                 if (confirmDialogResponse) {
+                                  logFirebaseEvent('Button_haptic_feedback');
+                                  HapticFeedback.lightImpact();
                                   logFirebaseEvent('Button_backend_call');
                                   await buttonEventsRecordList
                                       .sortedList(
@@ -1354,8 +1356,6 @@ class _AdminUpdateScore2WidgetState extends State<AdminUpdateScore2Widget>
                                       .update(createResultsRecordData(
                                     docID: _model.docRef1?.reference.id,
                                   ));
-                                  logFirebaseEvent('Button_haptic_feedback');
-                                  HapticFeedback.lightImpact();
                                   logFirebaseEvent('Button_navigate_back');
                                   context.safePop();
                                 } else {
@@ -1390,7 +1390,7 @@ class _AdminUpdateScore2WidgetState extends State<AdminUpdateScore2Widget>
                               safeSetState(() {});
                             },
                             text: FFLocalizations.of(context).getText(
-                              'knhcxoi0' /* Update Score */,
+                              'knhcxoi0' /* Update Score & Send Socre To A... */,
                             ),
                             options: FFButtonOptions(
                               width: double.infinity,

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'create_stream_model.dart';
 export 'create_stream_model.dart';
 
@@ -270,21 +271,46 @@ class _CreateStreamWidgetState extends State<CreateStreamWidget> {
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent('CREATE_STREAM_COMP_create_ON_TAP');
-                        logFirebaseEvent('create_navigate_to');
+                        if ((_model.textController1.text == '') ||
+                            (_model.shortBioTextController.text == '')) {
+                          logFirebaseEvent('create_alert_dialog');
+                          await showDialog(
+                            context: context,
+                            builder: (alertDialogContext) {
+                              return WebViewAware(
+                                child: AlertDialog(
+                                  title:
+                                      const Text('Please fill in all the fields. '),
+                                  content: const Text(
+                                      'Cannot start live streaming without filling in all the fields. '),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: const Text('Ok'),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          );
+                        } else {
+                          logFirebaseEvent('create_navigate_to');
 
-                        context.goNamed(
-                          'LiveStreamPage',
-                          queryParameters: {
-                            'streamName': serializeParam(
-                              _model.textController1.text,
-                              ParamType.String,
-                            ),
-                            'streamDescription': serializeParam(
-                              _model.shortBioTextController.text,
-                              ParamType.String,
-                            ),
-                          }.withoutNulls,
-                        );
+                          context.goNamed(
+                            'LiveStreamPage',
+                            queryParameters: {
+                              'streamName': serializeParam(
+                                _model.textController1.text,
+                                ParamType.String,
+                              ),
+                              'streamDescription': serializeParam(
+                                _model.shortBioTextController.text,
+                                ParamType.String,
+                              ),
+                            }.withoutNulls,
+                          );
+                        }
                       },
                       text: FFLocalizations.of(context).getText(
                         'ce2s0wyf' /* Create Stream */,

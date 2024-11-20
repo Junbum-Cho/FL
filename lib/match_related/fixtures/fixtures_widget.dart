@@ -499,6 +499,146 @@ class _FixturesWidgetState extends State<FixturesWidget> {
                                           listViewEventsRecord.time?.toString(),
                                           ParamType.String,
                                         ),
+                                        'teamId': serializeParam(
+                                          () {
+                                            if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Soccer') {
+                                              return '1117';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'JV Soccer') {
+                                              return '5510';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Thirds Soccer') {
+                                              return '1116';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Fourths Soccer') {
+                                              return '5509';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Football') {
+                                              return '1109';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'JV Football') {
+                                              return '1108';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Thirds Football') {
+                                              return '5512';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Cross Country') {
+                                              return '5239';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Hockey') {
+                                              return '1107';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity B Hockey') {
+                                              return '1107';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'JV Hockey') {
+                                              return '1106';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Thirds Hockey') {
+                                              return '5513';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Basketball') {
+                                              return '1090';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'JV Basketball') {
+                                              return '1091';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Thirds (Blue) Basketball') {
+                                              return '5386';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Thirds (Red) Basketball') {
+                                              return '5193';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Squash') {
+                                              return '1133';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'JV Squash') {
+                                              return '1131';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Thirds Squash') {
+                                              return '5521';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Swimming') {
+                                              return '1121';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Wrestling') {
+                                              return '1134';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Baseball') {
+                                              return '1087';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'JV Baseball') {
+                                              return '1086';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Thirds Baseball') {
+                                              return '5500';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Golf') {
+                                              return '1110';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'JV Golf') {
+                                              return '1110';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Lacrosse') {
+                                              return '5505';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity B Lacrosse') {
+                                              return '1113';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'JV Lacrosse') {
+                                              return '1111';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Thirds Lacrosse') {
+                                              return '1112';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Varsity Tennis') {
+                                              return '1125';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'JV Tennis') {
+                                              return '5520';
+                                            } else if (listViewEventsRecord
+                                                    .sportsType ==
+                                                'Thirds Tennis') {
+                                              return '1123';
+                                            } else {
+                                              return '';
+                                            }
+                                          }(),
+                                          ParamType.String,
+                                        ),
                                       }.withoutNulls,
                                     );
                                   },

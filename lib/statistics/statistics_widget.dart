@@ -128,7 +128,7 @@ class _StatisticsWidgetState extends State<StatisticsWidget>
                                   15.0, 10.0, 0.0, 0.0),
                               child: Text(
                                 FFLocalizations.of(context).getText(
-                                  'wjvjc21s' /* 2023/2024 Top Stats */,
+                                  'wjvjc21s' /* 20232024 Top Stats */,
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .headlineSmall

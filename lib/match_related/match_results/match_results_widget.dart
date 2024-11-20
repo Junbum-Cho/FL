@@ -1,4 +1,3 @@
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -79,6 +78,7 @@ class _MatchResultsWidgetState extends State<MatchResultsWidget> {
         padding: const EdgeInsets.all(5.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Align(
               alignment: const AlignmentDirectional(0.0, 0.0),
@@ -95,7 +95,8 @@ class _MatchResultsWidgetState extends State<MatchResultsWidget> {
               padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Align(
                     alignment: const AlignmentDirectional(-1.0, 0.0),
@@ -204,22 +205,7 @@ class _MatchResultsWidgetState extends State<MatchResultsWidget> {
                       ),
                     ),
                   ),
-                  FlutterFlowIconButton(
-                    borderColor: const Color(0x00570846),
-                    borderRadius: 7.0,
-                    borderWidth: 1.0,
-                    buttonSize: 30.0,
-                    fillColor: FlutterFlowTheme.of(context).alternate,
-                    icon: Icon(
-                      Icons.arrow_forward,
-                      color: FlutterFlowTheme.of(context).accent1,
-                      size: 15.0,
-                    ),
-                    onPressed: () {
-                      print('IconButton pressed ...');
-                    },
-                  ),
-                ].addToStart(const SizedBox(width: 20.0)),
+                ].divide(const SizedBox(width: 45.0)),
               ),
             ),
           ],

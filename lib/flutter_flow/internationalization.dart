@@ -401,7 +401,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
           'Enjoy each contents specialized only for each Founders League students.',
       'es':
           'Disfruta de cada contenido especializado solo para cada alumno de Founders League.',
-      'ko': '파운더스 리그 각 학생만을 위해 특화된 콘텐츠를 즐겨보세요.',
+      'ko': '파운더스 리그 학생들을 위해 특별히 제작된 콘텐츠를 즐겨보세요.',
       'zh_Hans': '享受仅为每个创始人联盟学生专门提供的每个内容。',
     },
     '7rpu0e28': {
@@ -848,23 +848,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '체육 실기',
       'zh_Hans': '竞技',
     },
-    '4r5zbjmh': {
-      'en': 'Tab View 2',
-      'es': 'Vista de pestaña 2',
-      'ko': '탭 보기 2',
-      'zh_Hans': '标签视图 2',
-    },
     'cv80c6wj': {
       'en': 'Fixtures',
       'es': 'Accesorios',
       'ko': '비품',
       'zh_Hans': '固定装置',
-    },
-    'wdri7jj6': {
-      'en': 'Tab View 3',
-      'es': 'Vista de pestaña 3',
-      'ko': '탭 보기 3',
-      'zh_Hans': '标签视图 3',
     },
     '77oouqd8': {
       'en': 'Home',
@@ -1321,7 +1309,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ef1msusr': {
       'en': 'Write your first paragraph here...',
       'es': 'Escribe tu primer párrafo aquí...',
-      'ko': '여기에 첫 번째 문단을 작성하세요...',
+      'ko': '첫 번째 문단을 여기에 작성하세요...',
       'zh_Hans': '在这里写下你的第一段...',
     },
     'u1gsl0nn': {
@@ -1357,7 +1345,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '1r90x0b8': {
       'en': 'Write your first paragraph here...',
       'es': 'Escribe tu primer párrafo aquí...',
-      'ko': '여기에 첫 번째 문단을 작성하세요...',
+      'ko': '첫 번째 문단을 여기에 작성하세요...',
       'zh_Hans': '在这里写下你的第一段...',
     },
     'tzq8txhu': {
@@ -1468,10 +1456,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '概述',
     },
     'btmnxzb0': {
-      'en': 'Official',
-      'es': 'Oficial',
-      'ko': '공식적인',
-      'zh_Hans': '官方的',
+      'en': 'Rosters',
+      'es': 'Listas de jugadores',
+      'ko': '명단',
+      'zh_Hans': '名册',
+    },
+    't0m3p42o': {
+      'en': 'No data for this team. Sorry! ',
+      'es': 'No hay datos para este equipo. ¡Lo sentimos!',
+      'ko': '이 팀에 대한 데이터가 없습니다. 죄송합니다!',
+      'zh_Hans': '暂无该球队的数据。抱歉！',
     },
     '8m9iyrhu': {
       'en': 'Games',
@@ -1603,10 +1597,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '先前比赛',
     },
     'hufyekyp': {
-      'en': 'More Articles',
-      'es': 'Más artículos',
-      'ko': '더 많은 기사',
-      'zh_Hans': '更多文章',
+      'en': 'More Matches',
+      'es': 'Más coincidencias',
+      'ko': '더 많은 매치',
+      'zh_Hans': '更多比赛',
     },
     '4rqcy4xk': {
       'en': 'This Season Overview',
@@ -2058,34 +2052,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ki1en7xe': {
       'en': 'Let\'s finish the onboarding by confirming your details below. ',
-      'es':
-          'Terminemos la incorporación llenando el formulario a continuación.',
-      'ko': '아래 양식을 작성하여 온보딩을 마무리해 보세요.',
-      'zh_Hans': '让我们通过填写下面的表格来完成入职培训。',
+      'es': 'Terminemos la incorporación confirmando sus datos a continuación.',
+      'ko': '아래에 귀하의 세부 정보를 확인하여 온보딩을 마무리해 보세요.',
+      'zh_Hans': '让我们通过确认以下详细信息来完成入职培训。',
     },
     'yz3xhs2k': {
       'en': 'Please confirm if your information.',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Por favor confirme su información.',
+      'ko': '귀하의 정보를 확인해 주세요.',
+      'zh_Hans': '请确认您的信息。',
     },
     'w4ily0cn': {
       'en': 'Yes',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Sí',
+      'ko': '예',
+      'zh_Hans': '是的',
     },
     'uor4jn5s': {
       'en': 'No',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'No',
+      'ko': '아니요',
+      'zh_Hans': '不',
     },
     'bsz0relg': {
       'en': 'Continue',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Continuar',
+      'ko': '계속하다',
+      'zh_Hans': '继续',
     },
     'mvxxkf2k': {
       'en': 'Home',
@@ -2175,7 +2168,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Loomis Chaffee School',
       'es': 'Escuela Loomis Chaffee',
       'ko': '루미스 채피 스쿨',
-      'zh_Hans': '洛米斯查菲学校',
+      'zh_Hans': '卢米斯查菲学校',
     },
     's125iq9d': {
       'en': 'Miss Porter\'s School',
@@ -2319,7 +2312,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '选手已选定！',
     },
     'knhcxoi0': {
-      'en': 'Update Score',
+      'en': 'Update Score & Send Socre To Atheletic Director',
       'es': 'Actualizar puntuación',
       'ko': '점수 업데이트',
       'zh_Hans': '更新分数',
@@ -3695,210 +3688,64 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'hra78my9': {
       'en': 'Our Players',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Nuestros jugadores',
+      'ko': '우리 선수들',
+      'zh_Hans': '我们的球员',
     },
-    'ej5tuwo4': {
+    '5qpac1y7': {
       'en': 'Mike Conley JR.',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es':
+          'Mike Conley Jr. (nacido el 10 de junio de 1961) es un exmiembro del Partido Demócrata',
+      'ko': '마이크 콘리 주니어',
+      'zh_Hans': '小迈克·康利',
     },
-    'qx2ab9ex': {
+    'elty3rhr': {
       'en': '6\' 3\" Point Guard',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': 'Base de 6\' 3\"',
+      'ko': '6\' 3\" 포인트 가드',
+      'zh_Hans': '6尺3寸控球后卫',
     },
-    '39vn64c5': {
-      'en': 'Bio',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+    '68s1out8': {
+      'en': 'Fun Facts',
+      'es': 'Datos curiosos',
+      'ko': '재밌는 사실들',
+      'zh_Hans': '有趣的事实',
     },
-    'spuffcw8': {
-      'en':
-          'John Doe is a talented, versatile shooting guard standing at 6\'5\", known for his exceptional ball-handling skills and ability to score from beyond the arc. Defensively, his quick reflexes and teamwork make him an essential player on the court, contributing to his team\'s overall success.',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '4vo1va4v': {
-      'en': 'Season Stat Highlights',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'l3uhbo6n': {
+    'ya72dipl': {
       'en': '16.2',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': '16.2',
+      'ko': '16.2',
+      'zh_Hans': '16.2',
     },
-    'se6d2drw': {
-      'en': 'PPG',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+    '32nbbb9u': {
+      'en': 'Grade',
+      'es': 'Calificación',
+      'ko': '등급',
+      'zh_Hans': '年级',
     },
-    'ul125qq2': {
+    'kkq7z92z': {
       'en': '3.0',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': '3.0',
+      'ko': '3.0',
+      'zh_Hans': '3.0',
     },
-    'wrtco26w': {
-      'en': 'REB',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+    'rf3zxp8f': {
+      'en': 'Jersey Number',
+      'es': 'Número de camiseta',
+      'ko': '저지 번호',
+      'zh_Hans': '球衣号码',
     },
-    '806id2e6': {
+    '3umo5bcf': {
       'en': '5.3',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+      'es': '5.3',
+      'ko': '5.3',
+      'zh_Hans': '5.3',
     },
-    'wefh8z5b': {
-      'en': 'AST',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'n5oafkpt': {
-      'en': 'Jordan Clarkson',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'srhlz2lq': {
-      'en': '6\' 4\" Point Guard',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'drqcyy33': {
-      'en': 'Bio',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'yenkxlks': {
-      'en':
-          'John Doe is a talented, versatile shooting guard standing at 6\'5\", known for his exceptional ball-handling skills and ability to score from beyond the arc. Defensively, his quick reflexes and teamwork make him an essential player on the court, contributing to his team\'s overall success.',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '25dk9bt1': {
-      'en': 'Season Stat Highlights',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'kxze1tqu': {
-      'en': '16.0',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'hj0abqiu': {
-      'en': 'PPG',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'pdu8b3mj': {
-      'en': '3.5',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'e4vlg1xq': {
-      'en': 'REB',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'buk0sn8o': {
-      'en': '2.5',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '1t553jkd': {
-      'en': 'AST',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'idw7mo2h': {
-      'en': 'Rudy Gay',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '6ka6ot9f': {
-      'en': '6\' 9\" Small Forward',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '0un4eqv6': {
-      'en': 'Bio',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '0wqn08oe': {
-      'en':
-          'John Doe is a talented, versatile shooting guard standing at 6\'5\", known for his exceptional ball-handling skills and ability to score from beyond the arc. Defensively, his quick reflexes and teamwork make him an essential player on the court, contributing to his team\'s overall success.',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '1jwahq01': {
-      'en': 'Season Stat Highlights',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'xqspbkio': {
-      'en': '8.3',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '4w65f3ia': {
-      'en': 'PPG',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    'i7844pjb': {
-      'en': '5.4',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '0ljqv45n': {
-      'en': 'REB',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '5ulcmvy7': {
-      'en': '2.5',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
-    },
-    '6y8zfrbp': {
-      'en': 'AST',
-      'es': '',
-      'ko': '',
-      'zh_Hans': '',
+    'htt0vokl': {
+      'en': 'Nationality',
+      'es': 'Nacionalidad',
+      'ko': '국적',
+      'zh_Hans': '国籍',
     },
     '1wfzf0af': {
       'en': 'Home',
@@ -4172,7 +4019,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '6bn7njhq': {
       'en': 'Upcomming Games',
       'es': 'Próximos juegos',
-      'ko': '예정된 게임',
+      'ko': '다가올 게임',
       'zh_Hans': '即将推出的游戏',
     },
   },
@@ -4400,7 +4247,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '3vrfnmou': {
       'en': 'Ai Chat Active!',
       'es': '¡Ai Chat activo!',
-      'ko': 'Ai 채팅이 활성화되었습니다!',
+      'ko': 'AI 채팅 활성화!',
       'zh_Hans': '愛聊活跃！',
     },
     'nxg4u6dw': {

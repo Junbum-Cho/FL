@@ -362,13 +362,8 @@ class _ResultsWidgetState extends State<ResultsWidget>
                                                 .where(
                                                   'matchDate',
                                                   isLessThanOrEqualTo:
-                                                      dateTimeFormat(
-                                                    "MEd",
-                                                    getCurrentTimestamp,
-                                                    locale: FFLocalizations.of(
-                                                            context)
-                                                        .languageCode,
-                                                  ),
+                                                      getCurrentTimestamp
+                                                          .toString(),
                                                 )
                                                 .orderBy('matchDate',
                                                     descending: true),

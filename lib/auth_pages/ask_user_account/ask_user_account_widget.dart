@@ -292,10 +292,18 @@ class _AskUserAccountWidgetState extends State<AskUserAccountWidget> {
                                         ) ??
                                         false;
                                 if (confirmDialogResponse) {
+                                  logFirebaseEvent('Button_auth');
+                                  GoRouter.of(context).prepareAuthEvent();
+                                  final user = await authManager
+                                      .signInAnonymously(context);
+                                  if (user == null) {
+                                    return;
+                                  }
                                   logFirebaseEvent('Button_navigate_to');
 
-                                  context.goNamed(
+                                  context.goNamedAuth(
                                     'Latest',
+                                    context.mounted,
                                     queryParameters: {
                                       'code': serializeParam(
                                         'NA',

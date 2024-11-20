@@ -8,8 +8,9 @@ export '/auth_pages/welcome_page/welcome_page_widget.dart'
     show WelcomePageWidget;
 export '/table/table_widget.dart' show TableWidget;
 export '/match_related/results/results_widget.dart' show ResultsWidget;
-export '/school_list/school_list_widget.dart' show SchoolListWidget;
-export '/each_school_profile/each_school_profile_widget.dart'
+export '/school_profiles/school_list/school_list_widget.dart'
+    show SchoolListWidget;
+export '/school_profiles/each_school_profile/each_school_profile_widget.dart'
     show EachSchoolProfileWidget;
 export '/three_core_pages/profiles/profiles_widget.dart' show ProfilesWidget;
 export '/notification_work/notification_settings/notification_settings_widget.dart'
@@ -19,10 +20,12 @@ export '/article_pages/upload_article/upload_article_widget.dart'
 export '/article_pages/article_details/article_details_widget.dart'
     show ArticleDetailsWidget;
 export '/bug_report/bug_report_widget.dart' show BugReportWidget;
-export '/team_overview/team_overview_widget.dart' show TeamOverviewWidget;
+export '/athletic_teams/team_overview/team_overview_widget.dart'
+    show TeamOverviewWidget;
 export '/match_related/match_preview/match_preview_widget.dart'
     show MatchPreviewWidget;
-export '/athletic_teams/athletic_teams_widget.dart' show AthleticTeamsWidget;
+export '/athletic_teams/athletic_teams/athletic_teams_widget.dart'
+    show AthleticTeamsWidget;
 export '/match_related/match_overview/match_overview_widget.dart'
     show MatchOverviewWidget;
 export '/match_related/fixtures/fixtures_widget.dart' show FixturesWidget;
@@ -73,4 +76,5 @@ export '/live_streaming/live_stream_viewer/live_stream_viewer_widget.dart'
     show LiveStreamViewerWidget;
 export '/auth_pages/login_successful/login_successful_widget.dart'
     show LoginSuccessfulWidget;
-export '/roster_detail/roster_detail_widget.dart' show RosterDetailWidget;
+export '/athletic_teams/roster_detail/roster_detail_widget.dart'
+    show RosterDetailWidget;
