@@ -95,11 +95,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const AskUserAccountWidget(),
         ),
         FFRoute(
-          name: 'SignUp',
-          path: '/signUp',
-          builder: (context, params) => const SignUpWidget(),
-        ),
-        FFRoute(
           name: 'Latest',
           path: '/latest',
           builder: (context, params) => params.isEmpty
@@ -442,11 +437,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const AdminActivityWidget(),
         ),
         FFRoute(
-          name: 'UserOnboarding',
-          path: '/userOnboarding',
-          builder: (context, params) => const UserOnboardingWidget(),
-        ),
-        FFRoute(
           name: 'AdminMatchSchedule',
           path: '/adminMatchSchedule',
           builder: (context, params) => AdminMatchScheduleWidget(
@@ -670,6 +660,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'onboarding',
+          path: '/onboarding',
+          builder: (context, params) => const OnboardingWidget(),
+        ),
+        FFRoute(
+          name: 'AdminDevRequest',
+          path: '/adminDevRequest',
+          builder: (context, params) => const AdminDevRequestWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

@@ -1,4 +1,3 @@
-import '/f_l_bar/f_l_table/f_l_table_widget.dart';
 import '/f_l_bar/option2/option2_widget.dart';
 import '/f_l_bar/options/options_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -19,8 +18,6 @@ class FlModel extends FlutterFlowModel<FlWidget> {
   late OptionsModel optionsModel3;
   // Model for Options component.
   late OptionsModel optionsModel4;
-  // Model for FLTable component.
-  late FLTableModel fLTableModel;
   // Model for Option2 component.
   late Option2Model option2Model1;
   // Model for Option2 component.
@@ -42,7 +39,6 @@ class FlModel extends FlutterFlowModel<FlWidget> {
     optionsModel2 = createModel(context, () => OptionsModel());
     optionsModel3 = createModel(context, () => OptionsModel());
     optionsModel4 = createModel(context, () => OptionsModel());
-    fLTableModel = createModel(context, () => FLTableModel());
     option2Model1 = createModel(context, () => Option2Model());
     option2Model2 = createModel(context, () => Option2Model());
     option2Model3 = createModel(context, () => Option2Model());
@@ -59,7 +55,6 @@ class FlModel extends FlutterFlowModel<FlWidget> {
     optionsModel2.dispose();
     optionsModel3.dispose();
     optionsModel4.dispose();
-    fLTableModel.dispose();
     option2Model1.dispose();
     option2Model2.dispose();
     option2Model3.dispose();

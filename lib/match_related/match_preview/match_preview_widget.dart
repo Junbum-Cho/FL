@@ -166,61 +166,55 @@ class _MatchPreviewWidgetState extends State<MatchPreviewWidget>
               automaticallyImplyLeading: false,
               actions: const [],
               flexibleSpace: FlexibleSpaceBar(
-                title: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 8.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      FlutterFlowIconButton(
-                        borderColor: Colors.transparent,
-                        borderRadius: 30.0,
-                        borderWidth: 1.0,
-                        buttonSize: 60.0,
-                        icon: Icon(
-                          Icons.arrow_back_ios_rounded,
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          size: 25.0,
-                        ),
-                        onPressed: () async {
-                          logFirebaseEvent(
-                              'MATCH_PREVIEW_arrow_back_ios_rounded_ICN');
-                          logFirebaseEvent('IconButton_navigate_back');
-                          context.pop();
-                        },
+                title: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    FlutterFlowIconButton(
+                      borderColor: Colors.transparent,
+                      borderRadius: 30.0,
+                      borderWidth: 1.0,
+                      buttonSize: 60.0,
+                      icon: Icon(
+                        Icons.arrow_back_ios_rounded,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        size: 25.0,
                       ),
-                      Text(
-                        '${valueOrDefault<String>(
-                          _model.schoolOne,
-                          'NA',
-                        )} vs ${valueOrDefault<String>(
-                          _model.schoolTwo1,
-                          'NA',
-                        )}',
-                        style: FlutterFlowTheme.of(context)
-                            .headlineMedium
-                            .override(
-                              fontFamily: 'Outfit',
-                              color: Colors.white,
-                              fontSize: 22.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w500,
-                            ),
+                      onPressed: () async {
+                        logFirebaseEvent(
+                            'MATCH_PREVIEW_arrow_back_ios_rounded_ICN');
+                        logFirebaseEvent('IconButton_navigate_back');
+                        context.pop();
+                      },
+                    ),
+                    Text(
+                      '${valueOrDefault<String>(
+                        _model.schoolOne,
+                        'NA',
+                      )} vs ${valueOrDefault<String>(
+                        _model.schoolTwo1,
+                        'NA',
+                      )}',
+                      style:
+                          FlutterFlowTheme.of(context).headlineMedium.override(
+                                fontFamily: 'Outfit',
+                                color: Colors.white,
+                                fontSize: 22.0,
+                                letterSpacing: 0.0,
+                                fontWeight: FontWeight.w500,
+                              ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
+                      child: Icon(
+                        Icons.ios_share,
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        size: 24.0,
                       ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-                        child: Icon(
-                          Icons.ios_share,
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                          size: 24.0,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
                 centerTitle: true,
                 expandedTitleScale: 1.0,

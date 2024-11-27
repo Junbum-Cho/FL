@@ -179,135 +179,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '家',
     },
   },
-  // SignUp
-  {
-    'dsyp0s43': {
-      'en': 'Founders League',
-      'es': 'Liga de Fundadores',
-      'ko': '창립자 리그',
-      'zh_Hans': '创始人联盟',
-    },
-    'ehcvxy7m': {
-      'en': 'Sign In',
-      'es': 'Iniciar sesión',
-      'ko': '로그인',
-      'zh_Hans': '登入',
-    },
-    'e3l8ge4j': {
-      'en': 'For Students',
-      'es': 'Para estudiantes',
-      'ko': '학생들을 위해',
-      'zh_Hans': '对于学生',
-    },
-    'u8frn5bd': {
-      'en': 'Let\'s begin by filling up the form below.',
-      'es': 'Comencemos llenando el formulario a continuación.',
-      'ko': '우선 아래 양식을 작성해 보겠습니다.',
-      'zh_Hans': '让我们从填写下面的表格开始。',
-    },
-    '9z2r1pyr': {
-      'en': 'Email',
-      'es': 'Correo electrónico',
-      'ko': '이메일',
-      'zh_Hans': '电子邮件',
-    },
-    'vtrfacu8': {
-      'en': 'Password',
-      'es': 'Contraseña',
-      'ko': '비밀번호',
-      'zh_Hans': '密码',
-    },
-    'e48i7n5s': {
-      'en': 'Confirm Password',
-      'es': 'confirmar Contraseña',
-      'ko': '비밀번호 확인',
-      'zh_Hans': '确认密码',
-    },
-    'xqnbocb7': {
-      'en': 'Create Account',
-      'es': 'Crear una cuenta',
-      'ko': '계정 생성',
-      'zh_Hans': '创建账户',
-    },
-    '2sty83pn': {
-      'en': 'Or sign up with',
-      'es': 'O regístrate con',
-      'ko': '또는 가입하세요',
-      'zh_Hans': '或注册',
-    },
-    'r8q8d1pi': {
-      'en': 'Google Account',
-      'es': 'Cuenta de Google',
-      'ko': '구글 계정',
-      'zh_Hans': 'Google 帐户',
-    },
-    'qaoqe5o7': {
-      'en': 'Sign Up',
-      'es': 'Inscribirse',
-      'ko': '가입하기',
-      'zh_Hans': '报名',
-    },
-    'vveo75ll': {
-      'en': 'For Faculty',
-      'es': 'Para la facultad',
-      'ko': '교수진을 위해',
-      'zh_Hans': '对于教师',
-    },
-    'corvdpx7': {
-      'en': 'Let\'s begin by filling up the form below.',
-      'es': 'Comencemos llenando el formulario a continuación.',
-      'ko': '우선 아래 양식을 작성해 보겠습니다.',
-      'zh_Hans': '让我们从填写下面的表格开始。',
-    },
-    'ti05lsjv': {
-      'en': 'Email',
-      'es': 'Correo electrónico',
-      'ko': '이메일',
-      'zh_Hans': '电子邮件',
-    },
-    'cz43uwus': {
-      'en': 'Password',
-      'es': 'Contraseña',
-      'ko': '비밀번호',
-      'zh_Hans': '密码',
-    },
-    'hqwzlvdy': {
-      'en': 'Confirm Password',
-      'es': 'confirmar Contraseña',
-      'ko': '비밀번호 확인',
-      'zh_Hans': '确认密码',
-    },
-    'zprm2sa1': {
-      'en': 'Create Account',
-      'es': 'Crear una cuenta',
-      'ko': '계정 생성',
-      'zh_Hans': '创建账户',
-    },
-    'r2ktfe76': {
-      'en': 'Or sign up with',
-      'es': 'O regístrate con',
-      'ko': '또는 가입하세요',
-      'zh_Hans': '或注册',
-    },
-    'yx2n85dw': {
-      'en': 'Google Account',
-      'es': 'Cuenta de Google',
-      'ko': '구글 계정',
-      'zh_Hans': 'Google 帐户',
-    },
-    'hb5hs4c6': {
-      'en': 'Home',
-      'es': 'Hogar',
-      'ko': '집',
-      'zh_Hans': '家',
-    },
-  },
   // Latest
   {
     'hgnuhew8': {
       'en': 'Founders League',
       'es': 'Liga de Fundadores',
-      'ko': '창립자 리그',
+      'ko': '파운더스 리그',
       'zh_Hans': '创始人联盟',
     },
     'emmcrds8': {
@@ -902,7 +779,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'e42oj859': {
       'en': 'Tutorial',
       'es': 'Tutorial',
-      'ko': '지도 시간',
+      'ko': '튜토리얼',
       'zh_Hans': '教程',
     },
     '9sk5i6ky': {
@@ -1731,6 +1608,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ko': '테니스',
       'zh_Hans': '网球',
     },
+    '2wug8p5s': {
+      'en': 'Track & Field',
+      'es': 'Tenis',
+      'ko': '테니스',
+      'zh_Hans': '网球',
+    },
     'sybexlm8': {
       'en': 'Home',
       'es': 'Hogar',
@@ -2008,79 +1891,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // AdminActivity
   {
     'azxpidlx': {
-      'en': 'Home',
-      'es': 'Hogar',
-      'ko': '집',
-      'zh_Hans': '家',
-    },
-  },
-  // UserOnboarding
-  {
-    'ji2m63ke': {
-      'en': 'Welcome!',
-      'es': '¡Bienvenido!',
-      'ko': '환영!',
-      'zh_Hans': '欢迎！',
-    },
-    'xr2estzh': {
-      'en':
-          'Congrats for creating your account for FL! I am thrilled to get to know you more! ',
-      'es':
-          '¡Felicitaciones por crear tu cuenta en FL! ¡Estoy muy emocionada de conocerte más!',
-      'ko': 'FL 계정을 만들어 주셔서 축하드립니다! 여러분을 더 알게 되어 기쁩니다!',
-      'zh_Hans': '恭喜您创建了 FL 帐户！我很高兴能进一步了解您！',
-    },
-    'muhym9mr': {
-      'en': 'Express Yourself!',
-      'es': '¡Exprésate!',
-      'ko': '자신을 표현하세요!',
-      'zh_Hans': '表达你自己！',
-    },
-    'iiiyu0z3': {
-      'en':
-          'Please Tell About yourself so that we provide high-quality service.',
-      'es':
-          'Cuéntenos algo sobre usted para que podamos brindarle un servicio de alta calidad.',
-      'ko': '고품질의 서비스를 제공할 수 있도록 본인에 대한 정보를 알려주세요.',
-      'zh_Hans': '请介绍一下您自己，以便我们提供高质量的服务。',
-    },
-    'xu9mps4s': {
-      'en': 'Last Step',
-      'es': 'Último paso',
-      'ko': '마지막 단계',
-      'zh_Hans': '最后一步',
-    },
-    'ki1en7xe': {
-      'en': 'Let\'s finish the onboarding by confirming your details below. ',
-      'es': 'Terminemos la incorporación confirmando sus datos a continuación.',
-      'ko': '아래에 귀하의 세부 정보를 확인하여 온보딩을 마무리해 보세요.',
-      'zh_Hans': '让我们通过确认以下详细信息来完成入职培训。',
-    },
-    'yz3xhs2k': {
-      'en': 'Please confirm if your information.',
-      'es': 'Por favor confirme su información.',
-      'ko': '귀하의 정보를 확인해 주세요.',
-      'zh_Hans': '请确认您的信息。',
-    },
-    'w4ily0cn': {
-      'en': 'Yes',
-      'es': 'Sí',
-      'ko': '예',
-      'zh_Hans': '是的',
-    },
-    'uor4jn5s': {
-      'en': 'No',
-      'es': 'No',
-      'ko': '아니요',
-      'zh_Hans': '不',
-    },
-    'bsz0relg': {
-      'en': 'Continue',
-      'es': 'Continuar',
-      'ko': '계속하다',
-      'zh_Hans': '继续',
-    },
-    'mvxxkf2k': {
       'en': 'Home',
       'es': 'Hogar',
       'ko': '집',
@@ -3748,6 +3558,119 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'zh_Hans': '国籍',
     },
     '1wfzf0af': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'ko': '집',
+      'zh_Hans': '家',
+    },
+  },
+  // onboarding
+  {
+    'f7ta5fxh': {
+      'en': 'Introducing FL.',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'dup37es1': {
+      'en':
+          'Welcome to FL, the Founders League app that integrates all athletic events happening within the league and the school. ',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'wxtduutt': {
+      'en': '',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'qjfqnnkl': {
+      'en':
+          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '990gyjfb': {
+      'en': 'Convenient Use',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'm77lrr97': {
+      'en':
+          'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '6k457x6u': {
+      'en': 'Dive into Realm of Ahtletics',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'h2vkacdk': {
+      'en': 'Sign up below in order to get started!',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    'bj4mo9ac': {
+      'en': 'Get Started',
+      'es': '',
+      'ko': '',
+      'zh_Hans': '',
+    },
+    '1wfzf0af': {
+      'en': 'Home',
+      'es': 'Hogar',
+      'ko': '집',
+      'zh_Hans': '家',
+    },
+  },
+  // AdminDevRequest
+  {
+    'renhlzj2': {
+      'en': 'Send Developer a Request',
+      'es': 'Reportar un error',
+      'ko': '버그 신고',
+      'zh_Hans': '报告错误',
+    },
+    '15ndzkge': {
+      'en':
+          'Fill out the form below to send a request to the developer. Thank you! ',
+      'es':
+          'Complete el formulario a continuación para informarnos sobre un error. Gracias por su preocupación.',
+      'ko': '버그를 제출하려면 아래 양식을 작성하세요. 관심을 가져주셔서 감사합니다.',
+      'zh_Hans': '填写下面的表格来提交错误。感谢您的关注。',
+    },
+    'p154q49c': {
+      'en': 'Title',
+      'es': 'Nombre del error...',
+      'ko': '버그 이름...',
+      'zh_Hans': '错误名称...',
+    },
+    '3py16rqh': {
+      'en': 'Short Description of what is going on...',
+      'es': 'Breve descripción de lo que está pasando...',
+      'ko': '무슨 일이 일어나고 있는지에 대한 간략한 설명...',
+      'zh_Hans': '简要描述正在发生的事情...',
+    },
+    'gx9uem82': {
+      'en': 'Upload Screenshot',
+      'es': 'Subir captura de pantalla',
+      'ko': '스크린샷 업로드',
+      'zh_Hans': '上传截图',
+    },
+    '6ddnmql2': {
+      'en': 'Submit Ticket',
+      'es': 'Enviar ticket',
+      'ko': '티켓 제출',
+      'zh_Hans': '提交工单',
+    },
+    'rxyavz6b': {
       'en': 'Home',
       'es': 'Hogar',
       'ko': '집',

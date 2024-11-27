@@ -26,6 +26,7 @@ import 'schema/special_articles_record.dart';
 import 'schema/special_article_contents_record.dart';
 import 'schema/past_stats_record.dart';
 import 'schema/streams_record.dart';
+import 'schema/dev_request_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -55,6 +56,7 @@ export 'schema/special_articles_record.dart';
 export 'schema/special_article_contents_record.dart';
 export 'schema/past_stats_record.dart';
 export 'schema/streams_record.dart';
+export 'schema/dev_request_record.dart';
 
 /// Functions to query UserRecords (as a Stream and as a Future).
 Future<int> queryUserRecordCount({
@@ -853,6 +855,43 @@ Future<List<StreamsRecord>> queryStreamsRecordOnce({
     queryCollectionOnce(
       StreamsRecord.collection,
       StreamsRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query DevRequestRecords (as a Stream and as a Future).
+Future<int> queryDevRequestRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      DevRequestRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<DevRequestRecord>> queryDevRequestRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      DevRequestRecord.collection,
+      DevRequestRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<DevRequestRecord>> queryDevRequestRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      DevRequestRecord.collection,
+      DevRequestRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

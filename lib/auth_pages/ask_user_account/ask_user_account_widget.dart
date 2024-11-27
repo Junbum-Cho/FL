@@ -153,7 +153,7 @@ class _AskUserAccountWidgetState extends State<AskUserAccountWidget> {
                                   logFirebaseEvent('Button_navigate_to');
 
                                   context.goNamedAuth(
-                                      'UserOnboarding', context.mounted);
+                                      'onboarding', context.mounted);
 
                                   logFirebaseEvent('Button_backend_call');
 

@@ -4,7 +4,7 @@ import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 
-const _kDynamicLinksUrl = 'https://foundersleagueportal.page.link';
+const _kDynamicLinksUrl = 'https://foundersleagueapp.com';
 const _kAppBundleId = 'com.mycompany.foundersleague';
 const _kIosAppId = '6593683974';
 

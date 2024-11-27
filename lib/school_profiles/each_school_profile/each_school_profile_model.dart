@@ -76,12 +76,6 @@ class EachSchoolProfileModel extends FlutterFlowModel<EachSchoolProfileWidget> {
   late SchoolTeamModel schoolTeamModel29;
   // Model for SchoolTeam component.
   late SchoolTeamModel schoolTeamModel30;
-  // Model for SchoolTeam component.
-  late SchoolTeamModel schoolTeamModel31;
-  // Model for SchoolTeam component.
-  late SchoolTeamModel schoolTeamModel32;
-  // Model for SchoolTeam component.
-  late SchoolTeamModel schoolTeamModel33;
 
   @override
   void initState(BuildContext context) {
@@ -117,9 +111,6 @@ class EachSchoolProfileModel extends FlutterFlowModel<EachSchoolProfileWidget> {
     schoolTeamModel28 = createModel(context, () => SchoolTeamModel());
     schoolTeamModel29 = createModel(context, () => SchoolTeamModel());
     schoolTeamModel30 = createModel(context, () => SchoolTeamModel());
-    schoolTeamModel31 = createModel(context, () => SchoolTeamModel());
-    schoolTeamModel32 = createModel(context, () => SchoolTeamModel());
-    schoolTeamModel33 = createModel(context, () => SchoolTeamModel());
   }
 
   @override
@@ -157,8 +148,5 @@ class EachSchoolProfileModel extends FlutterFlowModel<EachSchoolProfileWidget> {
     schoolTeamModel28.dispose();
     schoolTeamModel29.dispose();
     schoolTeamModel30.dispose();
-    schoolTeamModel31.dispose();
-    schoolTeamModel32.dispose();
-    schoolTeamModel33.dispose();
   }
 }

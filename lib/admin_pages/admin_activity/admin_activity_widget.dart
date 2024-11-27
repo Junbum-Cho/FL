@@ -243,7 +243,7 @@ class _AdminActivityWidgetState extends State<AdminActivityWidget> {
                               child: const AdminActivityListWidget(
                                 actionTitle: 'Update Realtime Banner',
                                 actionDescription:
-                                    'Update the contents of the real time banner located in the Latest page. ',
+                                    'Update the contents of the real time banner located in the Home page. ',
                                 facultySport: ' Thirds Hockey',
                               ),
                             ),
@@ -259,6 +259,9 @@ class _AdminActivityWidgetState extends State<AdminActivityWidget> {
                               logFirebaseEvent(
                                   'AdminActivityList_haptic_feedback');
                               HapticFeedback.lightImpact();
+                              logFirebaseEvent('AdminActivityList_navigate_to');
+
+                              context.pushNamed('AdminDevRequest');
                             },
                             child: wrapWithModel(
                               model: _model.adminActivityListModel7,

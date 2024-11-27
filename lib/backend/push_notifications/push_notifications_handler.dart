@@ -103,7 +103,6 @@ class ParameterData {
 final parametersBuilderMap =
     <String, Future<ParameterData> Function(Map<String, dynamic>)>{
   'AskUserAccount': ParameterData.none(),
-  'SignUp': ParameterData.none(),
   'Latest': (data) async => ParameterData(
         allParams: {
           'code': getParameter<String>(data, 'code'),
@@ -201,7 +200,6 @@ final parametersBuilderMap =
         },
       ),
   'AdminActivity': ParameterData.none(),
-  'UserOnboarding': ParameterData.none(),
   'AdminMatchSchedule': (data) async => ParameterData(
         allParams: {
           'facultyTeam': getParameter<String>(data, 'facultyTeam'),
@@ -272,6 +270,8 @@ final parametersBuilderMap =
           'playerNationality': getParameter<String>(data, 'playerNationality'),
         },
       ),
+  'onboarding': ParameterData.none(),
+  'AdminDevRequest': ParameterData.none(),
 };
 
 Map<String, dynamic> getInitialParameterData(Map<String, dynamic> data) {

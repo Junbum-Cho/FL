@@ -1,6 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
-import '/f_l_bar/f_l_table/f_l_table_widget.dart';
 import '/f_l_bar/option2/option2_widget.dart';
 import '/f_l_bar/options/options_widget.dart';
 import '/f_l_bar/upcoming_matches_copy/upcoming_matches_copy_widget.dart';
@@ -510,11 +509,6 @@ class _FlWidgetState extends State<FlWidget> {
                                 optionExplnanation:
                                     'Tap to View Athletic Teams.',
                               ),
-                            ),
-                            wrapWithModel(
-                              model: _model.fLTableModel,
-                              updateCallback: () => safeSetState(() {}),
-                              child: const FLTableWidget(),
                             ),
                           ],
                         ).addWalkthrough(

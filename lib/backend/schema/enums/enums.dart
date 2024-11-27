@@ -4,6 +4,7 @@ enum Role {
   faculty,
   student,
   studentAuthor,
+  administrator,
 }
 
 enum PersonId {

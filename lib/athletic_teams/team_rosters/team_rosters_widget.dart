@@ -13,19 +13,18 @@ class TeamRostersWidget extends StatefulWidget {
     String? playerName,
     String? playerPosition,
     String? sportsName,
-    int? playerNumber,
+    required this.playerNumber,
     String? playerImage,
   })  : playerName = playerName ?? 'John DOe',
         playerPosition = playerPosition ?? 'Midfielder',
         sportsName = sportsName ?? 'Varsity Hockey',
-        playerNumber = playerNumber ?? 42,
         playerImage = playerImage ??
             'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/v9nd0gcule8i/AOF_Logo.png';
 
   final String playerName;
   final String playerPosition;
   final String sportsName;
-  final int playerNumber;
+  final String? playerNumber;
   final String playerImage;
 
   @override
@@ -159,7 +158,7 @@ class _TeamRostersWidgetState extends State<TeamRostersWidget>
                                 0.0, 4.0, 0.0, 0.0),
                             child: Text(
                               '#${valueOrDefault<String>(
-                                widget.playerNumber.toString(),
+                                widget.playerNumber,
                                 '42',
                               )}',
                               style: FlutterFlowTheme.of(context)

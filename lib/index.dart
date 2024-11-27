@@ -1,7 +1,6 @@
 // Export pages
 export '/auth_pages/ask_user_account/ask_user_account_widget.dart'
     show AskUserAccountWidget;
-export '/auth_pages/sign_up/sign_up_widget.dart' show SignUpWidget;
 export '/three_core_pages/latest/latest_widget.dart' show LatestWidget;
 export '/three_core_pages/fl/fl_widget.dart' show FlWidget;
 export '/auth_pages/welcome_page/welcome_page_widget.dart'
@@ -32,8 +31,6 @@ export '/match_related/fixtures/fixtures_widget.dart' show FixturesWidget;
 export '/statistics/statistics_widget.dart' show StatisticsWidget;
 export '/admin_pages/admin_activity/admin_activity_widget.dart'
     show AdminActivityWidget;
-export '/auth_pages/user_onboarding/user_onboarding_widget.dart'
-    show UserOnboardingWidget;
 export '/admin_pages/admin_match_schedule/admin_match_schedule_widget.dart'
     show AdminMatchScheduleWidget;
 export '/admin_pages/add_game/add_game_widget.dart' show AddGameWidget;
@@ -78,3 +75,6 @@ export '/auth_pages/login_successful/login_successful_widget.dart'
     show LoginSuccessfulWidget;
 export '/athletic_teams/roster_detail/roster_detail_widget.dart'
     show RosterDetailWidget;
+export '/auth_pages/onboarding/onboarding_widget.dart' show OnboardingWidget;
+export '/admin_pages/admin_dev_request/admin_dev_request_widget.dart'
+    show AdminDevRequestWidget;

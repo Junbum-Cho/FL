@@ -375,19 +375,28 @@ class _TeamOverviewWidgetState extends State<TeamOverviewWidget>
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
-                                        AutoSizeText(
-                                          valueOrDefault<String>(
-                                            widget.sportsLocation,
-                                            'NA ',
+                                        Container(
+                                          width: 150.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
                                           ),
-                                          maxLines: 1,
-                                          minFontSize: 8.0,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyLarge
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                letterSpacing: 0.0,
-                                              ),
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: AutoSizeText(
+                                            valueOrDefault<String>(
+                                              widget.sportsLocation,
+                                              'NA ',
+                                            ),
+                                            maxLines: 1,
+                                            minFontSize: 8.0,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyLarge
+                                                .override(
+                                                  fontFamily: 'Readex Pro',
+                                                  letterSpacing: 0.0,
+                                                ),
+                                          ),
                                         ),
                                         Container(
                                           decoration: BoxDecoration(
@@ -406,11 +415,12 @@ class _TeamOverviewWidgetState extends State<TeamOverviewWidget>
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 8.0, 12.0, 8.0),
-                                            child: Text(
+                                            child: AutoSizeText(
                                               valueOrDefault<String>(
                                                 widget.shortSportsName,
                                                 'NA',
                                               ),
+                                              minFontSize: 8.0,
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyLarge
@@ -573,7 +583,7 @@ class _TeamOverviewWidgetState extends State<TeamOverviewWidget>
                                       ),
                                       width: double.infinity,
                                       height: 200.0,
-                                      fit: BoxFit.contain,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ],
@@ -762,7 +772,9 @@ class _TeamOverviewWidgetState extends State<TeamOverviewWidget>
                                                   (widget.shortSportsName !=
                                                       'Tennis') &&
                                                   (widget.shortSportsName !=
-                                                      'Swimming'))
+                                                      'Swimming') &&
+                                                  (widget.shortSportsName !=
+                                                      'Track and Field'))
                                                 Align(
                                                   alignment:
                                                       const AlignmentDirectional(
@@ -1026,14 +1038,17 @@ class _TeamOverviewWidgetState extends State<TeamOverviewWidget>
                                                                     playerPosition:
                                                                         valueOrDefault<
                                                                             String>(
-                                                                      (VeracrossAPIRequestsGroup
-                                                                              .veracrossListAthleticRostersCall
-                                                                              .jerseyNumber(
+                                                                      VeracrossAPIRequestsGroup
+                                                                          .veracrossListAthleticRostersCall
+                                                                          .position(
                                                                         columnVeracrossListAthleticRostersResponse
                                                                             .jsonBody,
-                                                                      )?[indexNumIndex])
-                                                                          ?.toString(),
-                                                                      'Midfielder',
+                                                                      )?[valueOrDefault<
+                                                                          int>(
+                                                                        indexNumIndex,
+                                                                        0,
+                                                                      )],
+                                                                      'Not Specified.',
                                                                     ),
                                                                     sportsName:
                                                                         valueOrDefault<
@@ -1044,14 +1059,14 @@ class _TeamOverviewWidgetState extends State<TeamOverviewWidget>
                                                                     ),
                                                                     playerNumber:
                                                                         valueOrDefault<
-                                                                            int>(
+                                                                            String>(
                                                                       VeracrossAPIRequestsGroup
                                                                           .veracrossListAthleticRostersCall
                                                                           .jerseyNumber(
                                                                         columnVeracrossListAthleticRostersResponse
                                                                             .jsonBody,
                                                                       )?[indexNumIndex],
-                                                                      42,
+                                                                      'Midfielder',
                                                                     ),
                                                                     playerImage:
                                                                         'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/founders-league-9fvk75/assets/v9nd0gcule8i/AOF_Logo.png',

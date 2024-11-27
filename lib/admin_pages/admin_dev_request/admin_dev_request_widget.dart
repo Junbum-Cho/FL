@@ -11,19 +11,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
-import 'bug_report_model.dart';
-export 'bug_report_model.dart';
+import 'admin_dev_request_model.dart';
+export 'admin_dev_request_model.dart';
 
-class BugReportWidget extends StatefulWidget {
-  const BugReportWidget({super.key});
+class AdminDevRequestWidget extends StatefulWidget {
+  const AdminDevRequestWidget({super.key});
 
   @override
-  State<BugReportWidget> createState() => _BugReportWidgetState();
+  State<AdminDevRequestWidget> createState() => _AdminDevRequestWidgetState();
 }
 
-class _BugReportWidgetState extends State<BugReportWidget>
+class _AdminDevRequestWidgetState extends State<AdminDevRequestWidget>
     with TickerProviderStateMixin {
-  late BugReportModel _model;
+  late AdminDevRequestModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -32,9 +32,10 @@ class _BugReportWidgetState extends State<BugReportWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => BugReportModel());
+    _model = createModel(context, () => AdminDevRequestModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'BugReport'});
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'AdminDevRequest'});
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
 
@@ -82,7 +83,7 @@ class _BugReportWidgetState extends State<BugReportWidget>
   @override
   Widget build(BuildContext context) {
     return Title(
-        title: 'BugReport',
+        title: 'DevRequest',
         color: FlutterFlowTheme.of(context).primary.withAlpha(0XFF),
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -103,7 +104,7 @@ class _BugReportWidgetState extends State<BugReportWidget>
                   size: 30.0,
                 ),
                 onPressed: () async {
-                  logFirebaseEvent('BUG_REPORT_arrow_back_ios_rounded_ICN_ON');
+                  logFirebaseEvent('ADMIN_DEV_REQUEST_arrow_back_ios_rounded');
                   logFirebaseEvent('IconButton_navigate_back');
                   context.pop();
                 },
@@ -123,7 +124,7 @@ class _BugReportWidgetState extends State<BugReportWidget>
                     children: [
                       Text(
                         FFLocalizations.of(context).getText(
-                          'abtrbok9' /* Report a Bug  */,
+                          'renhlzj2' /* Send Developer a Request */,
                         ),
                         style: FlutterFlowTheme.of(context)
                             .headlineMedium
@@ -138,7 +139,7 @@ class _BugReportWidgetState extends State<BugReportWidget>
                             const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
-                            'j6btnq3c' /* Fill out the form below to sub... */,
+                            '15ndzkge' /* Fill out the form below to sen... */,
                           ),
                           style:
                               FlutterFlowTheme.of(context).labelLarge.override(
@@ -157,7 +158,7 @@ class _BugReportWidgetState extends State<BugReportWidget>
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: FFLocalizations.of(context).getText(
-                                'tn27tbx8' /* Bug Name... */,
+                                'p154q49c' /* Title */,
                               ),
                               labelStyle: FlutterFlowTheme.of(context)
                                   .headlineSmall
@@ -233,7 +234,7 @@ class _BugReportWidgetState extends State<BugReportWidget>
                                     letterSpacing: 0.0,
                                   ),
                               hintText: FFLocalizations.of(context).getText(
-                                '0y9vcyev' /* Short Description of what is g... */,
+                                '3py16rqh' /* Short Description of what is g... */,
                               ),
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
@@ -318,13 +319,14 @@ class _BugReportWidgetState extends State<BugReportWidget>
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             logFirebaseEvent(
-                                'BUG_REPORT_Container_u49uvt3y_ON_TAP');
+                                'ADMIN_DEV_REQUEST_Container_rer9m3hq_ON_');
                             logFirebaseEvent(
                                 'Container_upload_media_to_firebase');
-                            final selectedMedia = await selectMedia(
+                            final selectedMedia =
+                                await selectMediaWithSourceBottomSheet(
+                              context: context,
                               imageQuality: 100,
-                              mediaSource: MediaSource.photoGallery,
-                              multiImage: false,
+                              allowPhoto: true,
                             );
                             if (selectedMedia != null &&
                                 selectedMedia.every((m) => validateFileFormat(
@@ -409,7 +411,7 @@ class _BugReportWidgetState extends State<BugReportWidget>
                                         16.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       FFLocalizations.of(context).getText(
-                                        'oy71kvo8' /* Upload Screenshot */,
+                                        'gx9uem82' /* Upload Screenshot */,
                                       ),
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
@@ -433,7 +435,7 @@ class _BugReportWidgetState extends State<BugReportWidget>
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
-                                'BUG_REPORT_PAGE_SUBMIT_TICKET_BTN_ON_TAP');
+                                'ADMIN_DEV_REQUEST_SUBMIT_TICKET_BTN_ON_T');
                             logFirebaseEvent('Button_haptic_feedback');
                             HapticFeedback.lightImpact();
                             if ((_model.textController1.text != '') &&
@@ -447,13 +449,12 @@ class _BugReportWidgetState extends State<BugReportWidget>
                                   : false)) {
                                 logFirebaseEvent('Button_backend_call');
 
-                                await BugCollectionsRecord.collection
+                                await DevRequestRecord.collection
                                     .doc()
-                                    .set(createBugCollectionsRecordData(
-                                      bugTitle: _model.textController1.text,
-                                      bugDescription:
-                                          _model.textController2.text,
-                                      bugScreenShot: _model.uploadedFileUrl,
+                                    .set(createDevRequestRecordData(
+                                      title: _model.textController1.text,
+                                      photoURL: _model.uploadedFileUrl,
+                                      description: _model.textController2.text,
                                     ));
                                 logFirebaseEvent('Button_navigate_back');
                                 context.safePop();
@@ -483,7 +484,7 @@ class _BugReportWidgetState extends State<BugReportWidget>
                             }
                           },
                           text: FFLocalizations.of(context).getText(
-                            'd9vd61m4' /* Submit Ticket */,
+                            '6ddnmql2' /* Submit Ticket */,
                           ),
                           icon: const Icon(
                             Icons.receipt_long,
